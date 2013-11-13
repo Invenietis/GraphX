@@ -1,0 +1,17 @@
+﻿
+
+Add edge labels - labels on path
+http://www.codeproject.com/Articles/30090/Text-On-A-Path-in-WPF
+
+Use DrawVisual for edges at least... performance
+
+Maybe coords handling fix
+https://graphsharp.codeplex.com/discussions/357856
+
+grap hImage save
+https://graphsharp.codeplex.com/discussions/63915
+
+
+http://habrahabr.ru/post/116758/ bundling
+
+http://www.graphspe.com/wpf-to-silverlight-converter#/Converter wpf to sl

@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C3DACE2-1963-4F43-BFC1-4BEE77A61567}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GraphX</RootNamespace>
+    <AssemblyName>GraphX</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;RELEASE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;RELEASE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QuickGraph, Version=3.6.61114.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\QuickGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="QuickGraph.Serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\QuickGraph.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="YAXLib, Version=2.12.0.0, Culture=neutral, PublicKeyToken=7cc39f8266ad1835, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\YAXLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\EdgeControl.cs" />
+    <Compile Include="Controls\EdgeLabelControl.cs" />
+    <Compile Include="Controls\GraphArea.cs" />
+    <Compile Include="Controls\GraphAreaBase.cs" />
+    <Compile Include="Controls\VertexControl.cs" />
+    <Compile Include="Controls\Zoombox\AreaSelectedEventArgs.cs" />
+    <Compile Include="Controls\IZoomControl.cs" />
+    <Compile Include="Controls\ZoomX\ZoomX.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\PathFinderER\HighResolutionTime.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\PathFinderER\IPathFinder.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\PathFinderER\MatrixItem.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\PathFinderER\PathFinder.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\PathFinderER\PathFinderEdgeRouting.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\PathFinderER\PathFinderEdgeRoutingParameters.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\PathFinderER\PriorityQueueB.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundFDPLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundFDPLayoutAlgorithm.Data.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundFDPLayoutAlgorithm.Init.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundFDPLayoutParameters.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundGraph.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundLayoutContext.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundLayoutIterationEventArgs.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundVertexInnerLayoutType.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\ICompoundGraph.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\ICompoundLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\ICompoundLayoutContext.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\ICompoundLayoutIterationEventArgs.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\ILayoutContext.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\LayoutContext.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\LayoutMode.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\TestingCompoundLayoutIterationEventArgs.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\TestingCompoundVertexInfo.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\IMutableCompoundGraph.cs" />
+    <Compile Include="Models\Animations\DeleteFadeAnimation.cs" />
+    <Compile Include="Models\Animations\DeleteShrinkAnimation.cs" />
+    <Compile Include="Models\Animations\MouseOverScaleAnimation.cs" />
+    <Compile Include="Models\ControlEventArgs.cs" />
+    <Compile Include="Models\EdgeEventOptions.cs" />
+    <Compile Include="Models\Enums\ImageType.cs" />
+    <Compile Include="Models\Enums\MouseOverAnimation.cs" />
+    <Compile Include="Models\Enums\DeleteAnimation.cs" />
+    <Compile Include="Models\Enums\EventType.cs" />
+    <Compile Include="Models\Enums\VertexShape.cs" />
+    <Compile Include="Models\Exceptions\GX_SerializationException.cs" />
+    <Compile Include="Models\Exceptions\GX_GeneralException.cs" />
+    <Compile Include="Models\Exceptions\GX_ObjectNotFoundException.cs" />
+    <Compile Include="Models\Exceptions\GX_InvalidDataException.cs" />
+    <Compile Include="Models\Interfaces\IOneWayControlAnimation.cs" />
+    <Compile Include="Models\Interfaces\IBidirectionalControlAnimation.cs" />
+    <Compile Include="Models\RemoveControlEventHandler.cs" />
+    <Compile Include="Models\VertexEventOptions.cs" />
+    <Compile Include="Models\VertexPositionChangedEH.cs" />
+    <Compile Include="Controls\Zoombox\AreaSelectedEventHandler.cs" />
+    <Compile Include="Controls\Zoombox\Core\CancelRoutedEventArgs.cs" />
+    <Compile Include="Controls\Zoombox\Core\Converters\BorderThicknessToStrokeThicknessConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\Converters\CalculatorMemoryToVisibilityConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\Converters\ColorBlendConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\Converters\ColorToSolidColorBrushConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\Converters\InverseBoolConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\Converters\ObjectTypeToNameConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\Converters\RoundedValueConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\Converters\SolidColorBrushToColorConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\Converters\VisibilityToBoolConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\Converters\WindowContentBorderMarginConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\ErrorMessages.cs" />
+    <Compile Include="Controls\Zoombox\Core\IndexChangedEventArgs.cs" />
+    <Compile Include="Controls\Zoombox\Core\IndexChangedEventHandler.cs" />
+    <Compile Include="Controls\Zoombox\Core\InvalidContentException.cs" />
+    <Compile Include="Controls\Zoombox\Core\InvalidTemplateException.cs" />
+    <Compile Include="Controls\Zoombox\Core\Media\Animation\AnimationRate.cs" />
+    <Compile Include="Controls\Zoombox\Core\Media\Animation\AnimationRateConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\Media\Animation\IterativeAnimationEquation.cs" />
+    <Compile Include="Controls\Zoombox\Core\Media\Animation\IterativeAnimationEquationDelegate.cs" />
+    <Compile Include="Controls\Zoombox\Core\Media\Animation\IterativeEquationConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\Media\Animation\PennerEquation.cs" />
+    <Compile Include="Controls\Zoombox\Core\Media\Animation\PennerEquations.cs" />
+    <Compile Include="Controls\Zoombox\Core\Media\WindowColors.cs" />
+    <Compile Include="Controls\Zoombox\Core\Primitives\CachedTextInfo.cs" />
+    <Compile Include="Controls\Zoombox\Core\Primitives\HsvColor.cs" />
+    <Compile Include="Controls\Zoombox\Core\Primitives\InputBase.cs" />
+    <Compile Include="Controls\Zoombox\Core\Primitives\MouseWheelActiveTriggerEnum.cs" />
+    <Compile Include="Controls\Zoombox\Core\Primitives\Selector.cs" />
+    <Compile Include="Controls\Zoombox\Core\Primitives\SelectorItem.cs" />
+    <Compile Include="Controls\Zoombox\Core\Primitives\ShapeBase.cs" />
+    <Compile Include="Controls\Zoombox\Core\Primitives\WindowControl.cs" />
+    <Compile Include="Controls\Zoombox\Core\PropertyChangedEventArgs.cs" />
+    <Compile Include="Controls\Zoombox\Core\PropertyChangedEventHandler.cs" />
+    <Compile Include="Controls\Zoombox\Core\Input\InputValidationErrorEventArgs.cs" />
+    <Compile Include="Controls\Zoombox\Core\Input\IValidateInput.cs" />
+    <Compile Include="Controls\Zoombox\Core\Input\KeyModifier.cs" />
+    <Compile Include="Controls\Zoombox\Core\Input\KeyModifierCollection.cs" />
+    <Compile Include="Controls\Zoombox\Core\Input\KeyModifierCollectionConverter.cs" />
+    <Compile Include="Controls\Zoombox\Core\QueryTextFromValueEventArgs.cs" />
+    <Compile Include="Controls\Zoombox\Core\QueryValueFromTextEventArgs.cs" />
+    <Compile Include="Controls\Zoombox\Core\UIElementAdorner.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\ColorUtilities.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\ContextMenuUtilities.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\DoubleHelper.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\EllipseHelper.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\FontUtilities.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\GeneralUtilities.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\KeyboardUtilities.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\ListUtilities.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\PointHelper.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\PropertyChangedExt.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\RectHelper.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\ReflectionHelper.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\ResourceHelper.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\RoutedEventHelper.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\Segment.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\TreeHelper.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\ValueChangeHelper.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\VisualTreeHelperEx.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\WeakEventListener.cs" />
+    <Compile Include="Controls\Zoombox\Core\Utilities\WindowUtilities.cs" />
+    <Compile Include="Controls\Zoombox\Core\WeakCollectionChangedWrapper.cs" />
+    <Compile Include="Controls\Zoombox\Zoombox.cs" />
+    <Compile Include="Controls\Zoombox\ZoomboxCursors.cs" />
+    <Compile Include="Controls\Zoombox\ZoomboxView.cs" />
+    <Compile Include="Controls\Zoombox\ZoomboxViewChangedEventArgs.cs" />
+    <Compile Include="Controls\Zoombox\ZoomboxViewChangedEventHandler.cs" />
+    <Compile Include="Controls\Zoombox\ZoomboxViewConverter.cs" />
+    <Compile Include="Controls\Zoombox\ZoomboxViewException.cs" />
+    <Compile Include="Controls\Zoombox\ZoomboxViewFinderDisplay.cs" />
+    <Compile Include="Controls\Zoombox\ZoomboxViewKind.cs" />
+    <Compile Include="Controls\Zoombox\ZoomboxViewStack.cs" />
+    <Compile Include="Controls\Zoombox\ZoomboxViewStackMode.cs" />
+    <Compile Include="Controls\Zoombox\ZoomboxZoomOn.cs" />
+    <Compile Include="Controls\ZoomControl\ContentSizeChangedHandler.cs" />
+    <Compile Include="Controls\ZoomControl\Converters\DoubleToLog10Converter.cs" />
+    <Compile Include="Controls\ZoomControl\Converters\EqualityToBooleanConverter.cs" />
+    <Compile Include="Controls\ZoomControl\ZoomContentPresenter.cs" />
+    <Compile Include="Controls\ZoomControl\ZoomControl.cs" />
+    <Compile Include="Controls\ZoomControl\ZoomControlModes.cs" />
+    <Compile Include="Controls\ZoomControl\ZoomViewModifierMode.cs" />
+    <Compile Include="DesignerExampleData\EdgeDataExample.cs" />
+    <Compile Include="DesignerExampleData\VertexDataExample.cs" />
+    <Compile Include="GraphSharpComponents\AlgorithmBase.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\EdgeBundling\BundleEdgeRouting.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\EdgeBundling\BundleEdgeRoutingParameters.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\EdgeBundling\VectorTools.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\EdgeRoutingAlgorithmBase.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\EdgeRoutingParameters.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\IEdgeRoutingAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\IEdgeRoutingParameters.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\IExternalEdgeRouting.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\SimpleER\SimpleEdgeRouting.cs" />
+    <Compile Include="GraphSharpComponents\EdgeRouting\SimpleER\SimpleERParameters.cs" />
+    <Compile Include="GraphSharpComponents\GraphHideHelper.cs" />
+    <Compile Include="GraphSharpComponents\GraphSharpExtensions.cs" />
+    <Compile Include="GraphSharpComponents\HierarchicalGraph.cs" />
+    <Compile Include="GraphSharpComponents\IAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\IAlgorithmParameters.cs" />
+    <Compile Include="GraphSharpComponents\IHierarchicalBidirectionalGraph.cs" />
+    <Compile Include="GraphSharpComponents\ISoftMutableGraph.cs" />
+    <Compile Include="GraphSharpComponents\LayeredTopologicalSortAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Circular\CircularLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Circular\CircularLayoutParameters.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\BoundedFRLayoutParameters.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\FRCoolingFunction.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\FreeFRLayoutParameters.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\FRLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\FRLayoutParametersBase.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\ISOMLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\ISOMLayoutParameters.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\KKLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\KKLayoutParameters.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\LinLogLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\LinLogLayoutAlgorithm.QuadTree.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\LinLogLayoutParameters.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaAlgorithm.BuildSparseNormalizedGraph.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaAlgorithm.DoCrossingMinimizations.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaAlgorithm.DoPreparing.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaLayoutAlgorithm.AlternatingLayer.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaLayoutAlgorithm.Data.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaLayoutAlgorithm.HorizontalAssignment.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaLayoutParameters.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaEdgeRoutings.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.Enums.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.SugiEdge.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.SugiVertex.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.VertexLayer.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.VertexLayerCollection.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutParameters.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\IExternalLayout.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\ILayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\ILayoutInfoIterationEventArgs.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\ILayoutIterationEventArgs.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\ILayoutParameters.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\IParameterizedLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\LayoutAlgorithmBase.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\LayoutDirection.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\LayoutIterationEventArgs.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\LayoutParametersBase.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\LayoutUtil.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\ParameterizedLayoutAlgorithmBase.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Random\RandomLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\BalloonTreeLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\BalloonTreeLayoutParameters.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\SimpleTreeLayoutAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\SimpleTreeLayoutAlgorithm.Data.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\SimpleTreeLayoutAlgorithm.WidthAndHeightOpt.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\SimpleTreeLayoutParameters.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\SpanningTreeGeneration.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\FSAAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\IExternalOverlapRemoval.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\IOverlapRemovalAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\IOverlapRemovalAlgorithmFactory.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\IOverlapRemovalContext.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\IOverlapRemovalParameters.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\OneWayFSAAlgorithm.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\OneWayFSAParameters.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\OverlapRemovalAlgorithmBase.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\OverlapRemovalContext.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\OverlapRemovalHelper.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\OverlapRemovalParameters.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\RectangleWrapper.cs" />
+    <Compile Include="GraphSharpComponents\OverlapRemoval\StandardOverlapRemovalAlgorithmFactory.cs" />
+    <Compile Include="GraphSharpComponents\SoftMutableBidirectionalGraph.cs" />
+    <Compile Include="GraphSharpComponents\SoftMutableHierarchicalGraph.cs" />
+    <Compile Include="GraphSharpComponents\TypedEdge.cs" />
+    <Compile Include="GraphSharpComponents\WeightedEdge.cs" />
+    <Compile Include="GraphSharpComponents\WrappedVertex.cs" />
+    <Compile Include="Helpers\CustomHelper.cs" />
+    <Compile Include="Helpers\GeometryHelper.cs" />
+    <Compile Include="Helpers\MathHelper.cs" />
+    <Compile Include="Helpers\PrintHelper.cs" />
+    <Compile Include="Helpers\ThreadingHelper.cs" />
+    <Compile Include="Models\AlgorithmFactory.cs" />
+    <Compile Include="Models\AlgorithmStorage.cs" />
+    <Compile Include="Models\AnimationFactory.cs" />
+    <Compile Include="Models\Animations\MoveAnimationBase.cs" />
+    <Compile Include="Models\Animations\MoveFadeAnimation.cs" />
+    <Compile Include="Models\Animations\MoveSimpleAnimation.cs" />
+    <Compile Include="Models\Behaviours\DragBehaviour.cs" />
+    <Compile Include="Models\Behaviours\HighlightBehaviour.cs" />
+    <Compile Include="Models\EdgeBase.cs" />
+    <Compile Include="Models\EdgeSelectedEventArgs.cs" />
+    <Compile Include="Models\EdgeSelectedEventHandler.cs" />
+    <Compile Include="Models\Enums\EdgeDashStyle.cs" />
+    <Compile Include="Models\Enums\EdgeRoutingAlgorithmTypeEnum.cs" />
+    <Compile Include="Models\Enums\EdgesType.cs" />
+    <Compile Include="Models\Enums\GraphControlType.cs" />
+    <Compile Include="Models\Enums\HighlightStrategy.cs" />
+    <Compile Include="Models\Enums\LayoutAlgorithmTypeEnum.cs" />
+    <Compile Include="Models\Enums\MoveAnimation.cs" />
+    <Compile Include="Models\Enums\OverlapRemovalAlgorithmTypeEnum.cs" />
+    <Compile Include="Models\GraphState.cs" />
+    <Compile Include="Models\Interfaces\IGraphArea.cs" />
+    <Compile Include="Models\Interfaces\IGraphControl.cs" />
+    <Compile Include="Models\Interfaces\IIdentifiableGraphDataObject.cs" />
+    <Compile Include="Models\Interfaces\IRoutingInfo.cs" />
+    <Compile Include="Models\StateStorage.cs" />
+    <Compile Include="Models\VertexBase.cs" />
+    <Compile Include="Models\VertexMovedEventArgs.cs" />
+    <Compile Include="Models\VertexPositionEventArgs.cs" />
+    <Compile Include="Models\VertexSelectedEventArgs.cs" />
+    <Compile Include="Models\VertexSelectedEventHandler.cs" />
+    <Compile Include="Models\DataSaveModel.cs" />
+    <Compile Include="Models\XmlSerializer\YAXPointArraySerializer.cs" />
+    <Compile Include="Models\XmlSerializer\YAXPointSerializer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CHANGELOG.txt" />
+    <Content Include="Controls\Zoombox\Resources\Zoom.cur" />
+    <Content Include="Controls\Zoombox\Resources\ZoomRelative.cur" />
+    <Content Include="DLL\QuickGraph.dll" />
+    <Content Include="DLL\QuickGraph.Serialization.dll" />
+    <Content Include="DLL\YAXLib.dll" />
+    <Content Include="Licenses\Apache2.0.txt" />
+    <Content Include="Licenses\MicrosoftPublicLicense.txt" />
+    <Content Include="Licenses\readme.txt" />
+    <Content Include="Licenses\TheMITLicense.txt" />
+    <Content Include="TODO.txt" />
+    <Resource Include="Images\help_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\Zoombox\Core\ErrorMessages.resx">
+      <DependentUpon>ErrorMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
