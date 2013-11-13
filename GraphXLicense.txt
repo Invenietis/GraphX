@@ -1,0 +1,10 @@
+If you use GraphX library (full or partialy) in your application please mention it and provide a link to http://graphx.codeplex.com
+That's all. Thanks!
+
+This software contains pieces of code and uses dlls from following projects:
+Graph# http://graphsharp.codeplex.com
+WPF Extensions http://wpfextensions.codeplex.com 
+QuickGraph  http://quickgraph.codeplex.com 
+NodeXL http://nodexl.codeplex.com
+
+All required licenses are attached.
