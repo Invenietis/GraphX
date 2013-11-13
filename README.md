@@ -8,10 +8,10 @@ Project Description
   Library depends on:
   
     * QuickGraph
-    
     * YAXLib
   
   Library uses partial code from:
+  
     * Graph#
     * WPFExtensions
     * NodeXL
