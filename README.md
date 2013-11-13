@@ -6,7 +6,9 @@ Project Description
   COLLABORATION statement: If you have any improvement or new features coded it will be good to see them posted in Discussions as well as your questions. GraphX is free product opened for collaboration. Share your work with the community! Thanks.
   
   Library depends on:
+  
     * QuickGraph
+    
     * YAXLib
   
   Library uses partial code from:
