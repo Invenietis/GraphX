@@ -1,0 +1,14 @@
+D:\Projects\GraphX for.NET\GraphX\GraphX\bin\Release\GraphX.dll
+D:\Projects\GraphX for.NET\GraphX\GraphX\bin\Release\QuickGraph.dll
+D:\Projects\GraphX for.NET\GraphX\GraphX\bin\Release\QuickGraph.Serialization.dll
+D:\Projects\GraphX for.NET\GraphX\GraphX\obj\Release\GraphX.csprojResolveAssemblyReference.cache
+D:\Projects\GraphX for.NET\GraphX\GraphX\obj\Release\GeneratedInternalTypeHelper.g.cs
+D:\Projects\GraphX for.NET\GraphX\GraphX\obj\Release\GraphX_MarkupCompile.cache
+D:\Projects\GraphX for.NET\GraphX\GraphX\obj\Release\GraphX_MarkupCompile.lref
+D:\Projects\GraphX for.NET\GraphX\GraphX\obj\Release\Themes\Generic.baml
+D:\Projects\GraphX for.NET\GraphX\GraphX\obj\Release\GraphX.g.resources
+D:\Projects\GraphX for.NET\GraphX\GraphX\obj\Release\GraphX.Properties.Resources.resources
+D:\Projects\GraphX for.NET\GraphX\GraphX\obj\Release\GraphX.csproj.GenerateResource.Cache
+D:\Projects\GraphX for.NET\GraphX\GraphX\obj\Release\GraphX.dll
+D:\Projects\GraphX for.NET\GraphX\GraphX\bin\Release\YAXLib.dll
+D:\Projects\GraphX for.NET\GraphX\GraphX\obj\Release\GraphX.Xceed.Wpf.Toolkit.Core.ErrorMessages.resources

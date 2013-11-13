@@ -1,0 +1,12 @@
+D:\Projects\GraphX for.NET\GraphX\WindowsFormsProject\bin\Release\WindowsFormsProject.exe
+D:\Projects\GraphX for.NET\GraphX\WindowsFormsProject\bin\Release\WindowsFormsProject.pdb
+D:\Projects\GraphX for.NET\GraphX\WindowsFormsProject\bin\Release\GraphX.dll
+D:\Projects\GraphX for.NET\GraphX\WindowsFormsProject\bin\Release\QuickGraph.dll
+D:\Projects\GraphX for.NET\GraphX\WindowsFormsProject\bin\Release\QuickGraph.Serialization.dll
+D:\Projects\GraphX for.NET\GraphX\WindowsFormsProject\bin\Release\YAXLib.dll
+D:\Projects\GraphX for.NET\GraphX\WindowsFormsProject\obj\Release\WindowsFormsProject.csprojResolveAssemblyReference.cache
+D:\Projects\GraphX for.NET\GraphX\WindowsFormsProject\obj\Release\WindowsFormsProject.Form1.resources
+D:\Projects\GraphX for.NET\GraphX\WindowsFormsProject\obj\Release\WindowsFormsProject.Properties.Resources.resources
+D:\Projects\GraphX for.NET\GraphX\WindowsFormsProject\obj\Release\WindowsFormsProject.csproj.GenerateResource.Cache
+D:\Projects\GraphX for.NET\GraphX\WindowsFormsProject\obj\Release\WindowsFormsProject.exe
+D:\Projects\GraphX for.NET\GraphX\WindowsFormsProject\obj\Release\WindowsFormsProject.pdb
