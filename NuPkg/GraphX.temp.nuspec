@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>GraphX</id>
+    <version>1.0.1</version>
+    <authors>panthernet</authors>
+    <owners>panthernet</owners>
+    <licenseUrl>http://www.panthernet.ru/en/projects-en/graphx-en/14-graphx-en/47-graphx-license</licenseUrl>
+    <projectUrl>http://www.panthernet.ru/en/projects-en/graphx-en</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>GraphX for .NET is an advanced graph visualization library based on Graph# algorithmic blueprints that uses WPF for rendering (WinForms interop is also working). I've coded it when i felt that Graph# is outdated and can't be easily enhanced in the means of performance and feature implementation.</description>
+    <releaseNotes>For the complete changelog, see: http://www.panthernet.ru/en/component/jdownloads/viewdownload/3-graphx/2-graphx-for-net-v1-0-1-release</releaseNotes>
+    <copyright>Copyright panthernet 2013</copyright>
+    <tags>GraphX</tags>
+    <dependencies>
+      <dependency id="QuickGraph" version="3.6.61119.7" />
+      <dependency id="YAXLib" version="2.12.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,3 @@
+# Ignore created packages
+*.nupkg
+lib/
