@@ -83,6 +83,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,9 +122,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GraphX\GraphX.csproj">
+    <ProjectReference Include="..\CK.GraphX\CK.GraphX.csproj">
       <Project>{5c3dace2-1963-4f43-bfc1-4bee77a61567}</Project>
-      <Name>GraphX</Name>
+      <Name>CK.GraphX</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -131,7 +134,6 @@
     <Content Include="Images\update.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

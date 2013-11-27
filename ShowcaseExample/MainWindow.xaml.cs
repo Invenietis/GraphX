@@ -38,7 +38,7 @@ namespace ShowcaseExample
             TestGround_Constructor();
             DataSource = GenerateData(datasourceSize);
             Closed += MainWindow_Closed;            
-#if RELEASE
+#if !DEBUG
             tabctrl.Items.Remove(tgtab);
 #endif
             Loaded += MainWindow_Loaded;
