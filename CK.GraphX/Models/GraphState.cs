@@ -33,7 +33,10 @@ namespace GraphX
 
         public GraphState(string id, TGraph graph, Dictionary<TVertex, Point> vPos, List<TEdge> vEdges, string description = "")
         {
-            ID = id; Graph = graph; Description = description; VertexPositions = vPos;
+            ID = id; 
+            Graph = graph; 
+            Description = description; 
+            VertexPositions = vPos;
             VisibleEdges = vEdges;
         }
     }

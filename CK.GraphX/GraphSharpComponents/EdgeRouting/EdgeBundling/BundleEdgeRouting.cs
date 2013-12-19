@@ -16,7 +16,7 @@ namespace GraphX.GraphSharp.Algorithms.EdgeRouting
 {
     /// <summary>
     /// EdgeBundler class is intended to be used for bundling and straightening of the edges of the graph.
-    /// The goal is to get the layout that is less clutered and more suitable for analiyzing.
+    /// The goal is to get the layout that is less cluttered and more suitable for analyzing.
     /// 
     /// This class is based on the paper "Force-Directed Edge Bundling for Graph Visualization"
     /// by Danny Holten and Jarke J. van Wijk.

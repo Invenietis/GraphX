@@ -16,7 +16,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout
         IDictionary<TVertex, Point> VertexPositions { get; }
 
         /// <summary>
-        /// Stores visual vertex sizes (autofilled if NeedVertexSizes property is set to true)
+        /// Stores visual vertex sizes (auto-filled if NeedVertexSizes property is set to true)
         /// </summary>
         IDictionary<TVertex, Size> VertexSizes { get; set; }
 

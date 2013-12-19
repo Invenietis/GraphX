@@ -390,7 +390,7 @@ namespace GraphX
             if (UpdateGraphOnDataOperations && Graph == null) throw new GX_InvalidDataException("RemoveVertex() -> UpdateGraphOnDataOperations property is set and Graph property is null!");
             if (vertexData == null || !_vertexlist.ContainsKey(vertexData)) return;
 
-            var ctrl = _vertexlist[vertexData];
+            VertexControl ctrl = _vertexlist[vertexData];
             _vertexlist.Remove(vertexData);
 
             if (DeleteAnimation != null)
@@ -400,9 +400,6 @@ namespace GraphX
                 Children.Remove(ctrl);
                 ctrl.Clean();
             }
-            //if (UpdateGraphOnDataOperations && Graph != null)
-            //    if (Graph.ContainsVertex(vertexData))
-            //        Graph.RemoveVertex(vertexData);
         }
 
         /// <summary>
@@ -611,7 +608,7 @@ namespace GraphX
                     (ExternalLayoutAlgorithm != null && ExternalLayoutAlgorithm.NeedVertexSizes))
                     vertexSizes = GetVertexSizes();
 
-                //setup layout algorythm
+                //setup layout algorithm
                 if (ExternalLayoutAlgorithm != null)
                 {
                     alg = ExternalLayoutAlgorithm;
@@ -882,7 +879,7 @@ namespace GraphX
         /// </summary>
         /// <param name="vc">Vertex visual control</param>
         /// <param name="VertexDataNeedUpdate">If vertex data inside edge routing algorthm needs to be updated</param>
-        public override void ComputeEdgeRoutesByVertex(VertexControl vc, bool VertexDataNeedUpdate = true)
+        public override void ComputeEdgeRoutesByVertex(VertexControl vc, bool vertexDataNeedUpdate = true)
         {
             if (vc == null) return;
             var vdata = vc.Vertex as TVertex;
@@ -894,7 +891,7 @@ namespace GraphX
             Graph.TryGetOutEdges(vdata, out edges);
             list.AddRange(edges);
 
-            if(VertexDataNeedUpdate)
+            if( vertexDataNeedUpdate )
             {
                 var position = vc.GetPosition();
                 var size = new Rect(position.X - vc.ActualWidth * (float)0.5, position.Y - vc.ActualHeight * (float)0.5, vc.ActualWidth, vc.ActualHeight);

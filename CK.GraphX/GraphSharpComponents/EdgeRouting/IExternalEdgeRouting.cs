@@ -9,6 +9,7 @@ namespace GraphX.GraphSharp.Algorithms.EdgeRouting
         /// Run algorithm calculation
         /// </summary>
         void Compute();
+
         /// <summary>
         /// Compute edge routing for single edge
         /// </summary>
