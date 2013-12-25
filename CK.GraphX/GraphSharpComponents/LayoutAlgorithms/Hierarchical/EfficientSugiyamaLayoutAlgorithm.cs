@@ -31,8 +31,6 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical
         private readonly IDictionary<TEdge, IList<SugiVertex>> _dummyVerticesOfEdges =
             new Dictionary<TEdge, IList<SugiVertex>>();
 
-        private readonly IDictionary<TVertex, Size> _vertexSizes;
-
         private readonly IDictionary<TVertex, SugiVertex> _vertexMap = 
             new Dictionary<TVertex, SugiVertex>();
 
@@ -70,11 +68,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical
             //copy the vertices
             foreach (var vertex in VisitedGraph.Vertices)
             {
-                Size size = new Size();
-                if (_vertexSizes != null)
-                    _vertexSizes.TryGetValue(vertex, out size);
-
-                var vertexWrapper = new SugiVertex(vertex, size);
+                var vertexWrapper = new SugiVertex(vertex, VertexSizes[vertex] );
                 _graph.AddVertex(vertexWrapper);
                 _vertexMap[vertex] = vertexWrapper;
             }
@@ -98,16 +92,5 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical
             DoCrossingMinimizations();
             CalculatePositions();
         }
-
-        
-
-        #region IEdgeRoutingAlgorithm<TVertex,TEdge,TGraph> Members
-
-        public IDictionary<TEdge, Point[]> EdgeRoutes
-        {
-            get { return _edgeRoutingPoints; }
-        }
-
-        #endregion
     }
 }

@@ -14,7 +14,6 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Tree
 		where TGraph : IBidirectionalGraph<TVertex, TEdge>
 	{
 		protected readonly TVertex root;
-		private readonly IDictionary<TVertex, Size> vertexSizes;
 		private readonly IDictionary<TVertex, BalloonData> datas = new Dictionary<TVertex, BalloonData>();
 		private HashSet<TVertex> visitedVertices = new HashSet<TVertex>();
 
