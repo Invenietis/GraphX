@@ -23,13 +23,15 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
             get { return new FreeFRLayoutParameters(); }
         }
 
-        #region Constructors
         public FRLayoutAlgorithm(Graph visitedGraph)
-            : base(visitedGraph) { }
+            : base(visitedGraph) 
+        { 
+        }
 
-        public FRLayoutAlgorithm(Graph visitedGraph, IDictionary<Vertex, Point> vertexPositions, FRLayoutParametersBase parameters)
-            : base(visitedGraph, vertexPositions, parameters) { }
-        #endregion
+        public FRLayoutAlgorithm(Graph visitedGraph, FRLayoutParametersBase parameters)
+            : base(visitedGraph, parameters) 
+        { 
+        }
 
         /// <summary>
         /// It computes the layout of the vertices.
@@ -53,14 +55,9 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
             // Actual temperature of the 'mass'. Used for cooling.
             var minimalTemperature = Parameters.InitialTemperature*0.01;
             _temperature = Parameters.InitialTemperature;
-            for (int i = 0;
-                  i < Parameters._iterationLimit
-                  && _temperature > minimalTemperature
-                  && State != QuickGraph.Algorithms.ComputationState.PendingAbortion;
-                  i++)
+            for (int i = 0; i < Parameters._iterationLimit && _temperature > minimalTemperature &&  !CancelToken.IsCancellationRequested; i++)
             {
                 IterateOne();
-
                 //make some cooling
                 switch (Parameters._coolingFunction)
                 {

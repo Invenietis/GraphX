@@ -42,13 +42,10 @@ namespace GraphX.Xceed.Wpf.Toolkit.Primitives
     public int SelectionStart { get; private set; }
     public int SelectionLength { get; private set; }
 
-    #region ICloneable Members
-
     public object Clone()
     {
       return new CachedTextInfo( this.Text, this.CaretIndex, this.SelectionStart, this.SelectionLength );
     }
 
-    #endregion
   }
 }

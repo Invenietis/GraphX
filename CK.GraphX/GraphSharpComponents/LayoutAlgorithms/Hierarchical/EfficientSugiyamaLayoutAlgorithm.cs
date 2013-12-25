@@ -51,24 +51,11 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical
         /// <summary>
         /// It stores the vertices or segments which inside the layers.
         /// </summary>
-        private readonly IList<IList<SugiVertex>> _layers =
-            new List<IList<SugiVertex>>();
+        private readonly IList<IList<SugiVertex>> _layers = new List<IList<SugiVertex>>();
 
-        public EfficientSugiyamaLayoutAlgorithm(
-            TGraph visitedGraph, 
-            EfficientSugiyamaLayoutParameters parameters, 
-            IDictionary<TVertex, Size> vertexSizes)
-            : this(visitedGraph, parameters, null, vertexSizes)
-        { }
-
-        public EfficientSugiyamaLayoutAlgorithm(
-            TGraph visitedGraph, 
-            EfficientSugiyamaLayoutParameters parameters, 
-            IDictionary<TVertex, Point> vertexPositions,
-            IDictionary<TVertex, Size> vertexSizes)
-            : base(visitedGraph, vertexPositions, parameters)
+        public EfficientSugiyamaLayoutAlgorithm( TGraph visitedGraph, EfficientSugiyamaLayoutParameters parameters )
+            : base(visitedGraph, parameters)
         {
-            _vertexSizes = vertexSizes;
         }
 
         /// <summary>

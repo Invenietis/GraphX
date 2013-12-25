@@ -1,9 +1,9 @@
 ﻿<Window x:Class="SimpleGraph.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:graphxctrl="clr-namespace:GraphX.Controls;assembly=GraphX"
-        xmlns:gx="clr-namespace:GraphX;assembly=GraphX"
-        xmlns:zb="clr-namespace:GraphX.Xceed.Wpf.Toolkit.Zoombox;assembly=GraphX"
+        xmlns:graphxctrl="clr-namespace:GraphX.Controls;assembly=CK.GraphX"
+        xmlns:gx="clr-namespace:GraphX;assembly=CK.GraphX"
+        xmlns:zb="clr-namespace:GraphX.Xceed.Wpf.Toolkit.Zoombox;assembly=CK.GraphX"
         xmlns:local="clr-namespace:SimpleGraph"  
         Title="Simple graph example. Read code comments for more info." Height="600" Width="825">
     <Grid>

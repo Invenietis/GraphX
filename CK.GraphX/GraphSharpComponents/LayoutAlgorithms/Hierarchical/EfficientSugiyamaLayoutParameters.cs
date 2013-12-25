@@ -35,7 +35,7 @@
                     return;
 
                 _layerDistance = value;
-                NotifyPropertyChanged("LayerDistance");
+                RaisePropertyChanged("LayerDistance");
             }
         }
 
@@ -48,7 +48,7 @@
                     return;
 
                 _vertexDistance = value;
-                NotifyPropertyChanged("VertexDistance");
+                RaisePropertyChanged("VertexDistance");
             }
         }
 
@@ -61,7 +61,7 @@
                     return;
 
                 _positionMode = value;
-                NotifyPropertyChanged("PositionMode");
+                RaisePropertyChanged("PositionMode");
             }
         }
 
@@ -74,7 +74,7 @@
                     return;
 
                 _widthPerHeight = value;
-                NotifyPropertyChanged("WidthPerHeight");
+                RaisePropertyChanged("WidthPerHeight");
             }
         }
 
@@ -87,7 +87,7 @@
                     return;
 
                 _optimizeWidth = value;
-                NotifyPropertyChanged("OptimizeWidth");
+                RaisePropertyChanged("OptimizeWidth");
             }
         }
 
@@ -100,7 +100,7 @@
                     return;
 
                 _minimizeEdgeLength = value;
-                NotifyPropertyChanged("MinimizeEdgeLength");
+                RaisePropertyChanged("MinimizeEdgeLength");
             }
         }
 
@@ -113,7 +113,7 @@
                     return;
 
                 _edgeRouting = value;
-                NotifyPropertyChanged("EdgeRouting");
+                RaisePropertyChanged("EdgeRouting");
             }
         }
 	}

@@ -247,16 +247,11 @@ namespace GraphX
 
         #region Virtual members
         /// <summary>
-        /// Returns all existing VertexControls addded into the layout
+        /// Returns all existing VertexControls added into the layout
         /// </summary>
         /// <returns></returns>
-        public virtual VertexControl[] GetAllVertexControls() { return new VertexControl[0]; }
+        public virtual ICollection<VertexControl> GetAllVertexControls() { return new VertexControl[0]; }
 
-        /// <summary>
-        /// Create and apply edge path using calculated ER parameters stored in edge
-        /// </summary>
-        /// <param name="edgectrl">Edge control</param>
-        //public virtual void PrepareEdgePath(EdgeControl edgectrl, bool useCurrentCoords = false) { }
         /// <summary>
         /// Get controls related to specified control 
         /// </summary>

@@ -13,37 +13,24 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
 		#region Private fields
 		private Queue<TVertex> _queue;
 		private Dictionary<TVertex, ISOMData> _isomDataDict;
-		private readonly Random _rnd = new Random( DateTime.Now.Millisecond );
 		private Point _tempPos;
 		private double adaptation;
 		private int radius;
 		#endregion
 
-		#region Constructors
-
 		public ISOMLayoutAlgorithm( TGraph visitedGraph, ISOMLayoutParameters oldParameters )
-			: base( visitedGraph )
-		{
-			Init( oldParameters );
-		}
-
-		public ISOMLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions,
-		                            ISOMLayoutParameters oldParameters )
-			: base( visitedGraph, vertexPositions, oldParameters )
+			: base( visitedGraph, oldParameters )
 		{
 			Init( oldParameters );
 		}
 
 		protected void Init( ISOMLayoutParameters oldParameters )
 		{
-			//init _parameters
 			base.InitParameters( oldParameters );
-
 			_queue = new Queue<TVertex>();
 			_isomDataDict = new Dictionary<TVertex, ISOMData>();
 			adaptation = Parameters.InitialAdaption;
 		}
-		#endregion
 
 		protected override void InternalCompute()
 		{
@@ -90,8 +77,8 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
 			_tempPos = new Point();
 
 			//get a random point in the container
-			_tempPos.X = 0.1 * Parameters.Width + ( _rnd.NextDouble() * 0.8 * Parameters.Width );
-			_tempPos.Y = 0.1 * Parameters.Height + ( _rnd.NextDouble() * 0.8 * Parameters.Height );
+			_tempPos.X = 0.1 * Parameters.Width + ( Randomizer.NextDouble() * 0.8 * Parameters.Width );
+			_tempPos.Y = 0.1 * Parameters.Height + ( Randomizer.NextDouble() * 0.8 * Parameters.Height );
 
 			//find the closest vertex to this random point
 			TVertex closest = GetClosest( _tempPos );

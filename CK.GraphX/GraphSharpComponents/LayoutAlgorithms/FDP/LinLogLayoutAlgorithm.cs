@@ -11,14 +11,15 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
 		where TEdge : IEdge<TVertex>
 		where TGraph : IBidirectionalGraph<TVertex, TEdge>
 	{
-		#region Constructors
 		public LinLogLayoutAlgorithm( TGraph visitedGraph )
-			: base( visitedGraph ) { }
+			: base( visitedGraph ) 
+        { 
+        }
 
-		public LinLogLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> positions,
-		                              LinLogLayoutParameters parameters )
-			: base( visitedGraph, positions, parameters ) { }
-		#endregion
+		public LinLogLayoutAlgorithm( TGraph visitedGraph, LinLogLayoutParameters parameters )
+			: base( visitedGraph, parameters ) 
+        { 
+        }
 
 		#region Member variables - privates
 		class LinLogVertex

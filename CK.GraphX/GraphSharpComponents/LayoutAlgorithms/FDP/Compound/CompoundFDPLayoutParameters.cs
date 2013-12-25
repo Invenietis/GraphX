@@ -32,7 +32,7 @@
                     return;
 
                 _idealEdgeLength = value;
-                NotifyPropertyChanged("IdealEdgeLength");
+                RaisePropertyChanged("IdealEdgeLength");
             }
         }
 
@@ -48,7 +48,7 @@
                     return;
 
                 _elasticConstant = value;
-                NotifyPropertyChanged("ElasticConstant");
+                RaisePropertyChanged("ElasticConstant");
             }
         }
 
@@ -65,7 +65,7 @@
                     return;
 
                 _repulsionConstant = value;
-                NotifyPropertyChanged("RepulsionConstant");
+                RaisePropertyChanged("RepulsionConstant");
             }
         }
 
@@ -82,7 +82,7 @@
                     return;
 
                 _nestingFactor = value;
-                NotifyPropertyChanged("NestingFactor");
+                RaisePropertyChanged("NestingFactor");
             }
         }
 
@@ -98,7 +98,7 @@
                     return;
 
                 _gravitationFactor = value;
-                NotifyPropertyChanged("GravitationFactor");
+                RaisePropertyChanged("GravitationFactor");
             }
         }
 
@@ -111,7 +111,7 @@
                     return;
 
                 _phase1Iterations = value;
-                NotifyPropertyChanged("Phase1Iterations");
+                RaisePropertyChanged("Phase1Iterations");
             }
         }
 
@@ -124,7 +124,7 @@
                     return;
 
                 _phase2Iterations = value;
-                NotifyPropertyChanged("Phase2Iterations");
+                RaisePropertyChanged("Phase2Iterations");
             }
         }
 
@@ -137,7 +137,7 @@
                     return;
 
                 _phase3Iterations = value;
-                NotifyPropertyChanged("Phase3Iterations");
+                RaisePropertyChanged("Phase3Iterations");
             }
         }
 
@@ -150,7 +150,7 @@
                     return;
 
                 _phase2TemperatureInitialMultiplier = value;
-                NotifyPropertyChanged("Phase2TemperatureInitialMultiplier");
+                RaisePropertyChanged("Phase2TemperatureInitialMultiplier");
             }
         }
 
@@ -163,7 +163,7 @@
                     return;
 
                 _phase3TemperatureInitialMultiplier = value;
-                NotifyPropertyChanged("Phase3TemperatureInitialMultiplier");
+                RaisePropertyChanged("Phase3TemperatureInitialMultiplier");
             }
         }
 
@@ -176,7 +176,7 @@
                     return;
 
                 _temperatureDecreasing = value;
-                NotifyPropertyChanged("TemperatureDecreasing");
+                RaisePropertyChanged("TemperatureDecreasing");
             }
         }
 
@@ -189,7 +189,7 @@
                     return;
 
                 _temperatureFactor = value;
-                NotifyPropertyChanged("TemperatureFactor");
+                RaisePropertyChanged("TemperatureFactor");
             }
         }
 
@@ -202,7 +202,7 @@
                     return;
 
                 _displacementLimitMultiplier = value;
-                NotifyPropertyChanged("DisplacementLimitMultiplier");
+                RaisePropertyChanged("DisplacementLimitMultiplier");
             }
         }
 
@@ -215,7 +215,7 @@
                     return;
 
                 _separationMultiplier = value;
-                NotifyPropertyChanged("SeparationMultiplier");
+                RaisePropertyChanged("SeparationMultiplier");
             }
         }
     }

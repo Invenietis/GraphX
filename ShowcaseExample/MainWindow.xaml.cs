@@ -41,14 +41,6 @@ namespace ShowcaseExample
 #if !DEBUG
             tabctrl.Items.Remove(tgtab);
 #endif
-            Loaded += MainWindow_Loaded;
-        }
-
-
-        void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Currently this showcase app doesn't include all GraphX features. For the latest info look in the changelog.txt file and Documentation section on the web site! Thanks!",
-                "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         void MainWindow_Closed(object sender, EventArgs e)

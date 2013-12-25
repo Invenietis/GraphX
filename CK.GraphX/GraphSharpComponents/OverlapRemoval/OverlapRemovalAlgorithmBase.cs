@@ -3,11 +3,12 @@ using System.Windows;
 
 namespace GraphX.GraphSharp.Algorithms.OverlapRemoval
 {
-	public abstract class OverlapRemovalAlgorithmBase<TObject, TParam> : AlgorithmBase, IOverlapRemovalAlgorithm<TObject, TParam>
+	public abstract class OverlapRemovalAlgorithmBase<TObject, TParam> : IOverlapRemovalAlgorithm<TObject, TParam>
 		where TObject : class
 		where TParam : IOverlapRemovalParameters
 	{
 		protected IDictionary<TObject, Rect> originalRectangles;
+
 		public IDictionary<TObject, Rect> Rectangles
 		{
 			get { return originalRectangles; }
@@ -26,7 +27,6 @@ namespace GraphX.GraphSharp.Algorithms.OverlapRemoval
 
 		public OverlapRemovalAlgorithmBase( IDictionary<TObject, Rect> rectangles, TParam parameters )
 		{
-			//eredeti téglalapok listája
 			originalRectangles = rectangles;
 
 			Parameters = parameters;
@@ -44,7 +44,7 @@ namespace GraphX.GraphSharp.Algorithms.OverlapRemoval
             }
         }
 
-		protected sealed override void InternalCompute()
+		public void Compute()
 		{
             GenerateWrappedRectangles(originalRectangles);
 

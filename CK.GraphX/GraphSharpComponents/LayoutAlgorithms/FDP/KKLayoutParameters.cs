@@ -12,7 +12,7 @@
 			set
 			{
 				width = value;
-				NotifyPropertyChanged("Width");
+				RaisePropertyChanged("Width");
 			}
 		}
 
@@ -26,7 +26,7 @@
 			set
 			{
 				height = value;
-				NotifyPropertyChanged("Height");
+				RaisePropertyChanged("Height");
 			}
 		}
 
@@ -40,7 +40,7 @@
 			set
 			{
 				maxIterations = value;
-				NotifyPropertyChanged("MaxIterations");
+				RaisePropertyChanged("MaxIterations");
 			}
 		}
 
@@ -51,7 +51,7 @@
 			set
 			{
 				_k = value;
-				NotifyPropertyChanged("K");
+				RaisePropertyChanged("K");
 			}
 		}
 
@@ -67,7 +67,7 @@
 			set
 			{
 				adjustForGravity = value;
-				NotifyPropertyChanged("AdjustForGravity");
+				RaisePropertyChanged("AdjustForGravity");
 			}
 		}
 
@@ -78,7 +78,7 @@
 			set
 			{
 				exchangeVertices = value;
-				NotifyPropertyChanged("ExchangeVertices");
+				RaisePropertyChanged("ExchangeVertices");
 			}
 		}
 
@@ -92,7 +92,7 @@
 			set
 			{
 				lengthFactor = value;
-				NotifyPropertyChanged("LengthFactor");
+				RaisePropertyChanged("LengthFactor");
 			}
 		}
 
@@ -106,7 +106,7 @@
 			set
 			{
 				disconnectedMultiplier = value;
-				NotifyPropertyChanged("DisconnectedMultiplier");
+				RaisePropertyChanged("DisconnectedMultiplier");
 			}
 		}
 	}

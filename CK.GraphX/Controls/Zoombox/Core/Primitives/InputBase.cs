@@ -24,7 +24,6 @@ namespace GraphX.Xceed.Wpf.Toolkit.Primitives
 {
   public abstract class InputBase : Control
   {
-    #region Properties
 
     #region CultureInfo
 
@@ -164,6 +163,5 @@ namespace GraphX.Xceed.Wpf.Toolkit.Primitives
 
     #endregion //WatermarkTemplate
 
-    #endregion //Properties
   }
 }

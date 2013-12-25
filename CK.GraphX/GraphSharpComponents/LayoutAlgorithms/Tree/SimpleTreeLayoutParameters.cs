@@ -14,7 +14,7 @@
 				if ( vertexGap != value )
 				{
 					vertexGap = value;
-					NotifyPropertyChanged( "VertexGap" );
+					RaisePropertyChanged( "VertexGap" );
 				}
 			}
 		}
@@ -31,7 +31,7 @@
 				if ( layerGap != value )
 				{
 					layerGap = value;
-					NotifyPropertyChanged( "LayerGap" );
+					RaisePropertyChanged( "LayerGap" );
 				}
 			}
 		}
@@ -48,7 +48,7 @@
 				if ( direction != value )
 				{
 					direction = value;
-					NotifyPropertyChanged( "Direction" );
+					RaisePropertyChanged( "Direction" );
 				}
 			}
 		}
@@ -65,7 +65,7 @@
 				if ( spanningTreeGeneration != value )
 				{
 					spanningTreeGeneration = value;
-					NotifyPropertyChanged( "SpanningTreeGeneration" );
+					RaisePropertyChanged( "SpanningTreeGeneration" );
 				}
 			}
 		}
@@ -81,7 +81,7 @@
                     return;
 
                 optimizeWidthAndHeight = value;
-                NotifyPropertyChanged("OptimizeWidthAndHeight");
+                RaisePropertyChanged("OptimizeWidthAndHeight");
             }
         }
 
@@ -96,7 +96,7 @@
                     return;
 
                 widthPerHeight = value;
-                NotifyPropertyChanged("WidthPerHeight");
+                RaisePropertyChanged("WidthPerHeight");
             }
         }
 	}

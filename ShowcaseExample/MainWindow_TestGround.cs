@@ -12,9 +12,17 @@ namespace ShowcaseExample
         private void TestGround_Constructor()
         {
             tst_but_gen.Click += tst_but_gen_Click;
+            tst_but_fakeLayout.Click += tst_but_fakeLayout_Click;
             tst_Area.UseNativeObjectArrange = false;
             tst_Area.EnableParallelEdges = true;
             tst_Area.ParallelEdgeDistance = 5;
+        }
+
+        void tst_but_fakeLayout_Click( object sender, RoutedEventArgs e )
+        {
+            var vControls = tst_Area.GetAllVertexControls();
+            foreach( var c in vControls ) Console.WriteLine( c.GetPosition() );
+            tst_Area.RelayoutGraph();
         }
 
         void tst_but_gen_Click(object sender, RoutedEventArgs e)

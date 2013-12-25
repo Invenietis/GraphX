@@ -28,16 +28,10 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Tree
 		}
 
 
-		public BalloonTreeLayoutAlgorithm(
-			TGraph visitedGraph,
-			IDictionary<TVertex, Point> vertexPositions,
-			IDictionary<TVertex, Size> vertexSizes,
-			BalloonTreeLayoutParameters oldParameters,
-			TVertex selectedVertex )
-			: base( visitedGraph, vertexPositions, oldParameters )
+		public BalloonTreeLayoutAlgorithm( TGraph visitedGraph, BalloonTreeLayoutParameters oldParameters, TVertex selectedVertex )
+			: base( visitedGraph, oldParameters )
 		{
 			this.root = selectedVertex;
-			this.vertexSizes = vertexSizes;
 		}
 
 		protected override void InternalCompute()

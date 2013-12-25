@@ -24,14 +24,12 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
-
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\SharedKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -41,7 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -50,7 +48,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <DocumentationFile>bin\Release\CK.GraphX.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -142,6 +140,7 @@
     <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\TestingCompoundLayoutIterationEventArgs.cs" />
     <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\TestingCompoundVertexInfo.cs" />
     <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\IMutableCompoundGraph.cs" />
+    <Compile Include="GraphSharpComponents\PointAndSizeExtension.cs" />
     <Compile Include="Models\Animations\DeleteFadeAnimation.cs" />
     <Compile Include="Models\Animations\DeleteShrinkAnimation.cs" />
     <Compile Include="Models\Animations\MouseOverScaleAnimation.cs" />
@@ -246,7 +245,6 @@
     <Compile Include="Controls\ZoomControl\ZoomViewModifierMode.cs" />
     <Compile Include="DesignerExampleData\EdgeDataExample.cs" />
     <Compile Include="DesignerExampleData\VertexDataExample.cs" />
-    <Compile Include="GraphSharpComponents\AlgorithmBase.cs" />
     <Compile Include="GraphSharpComponents\EdgeRouting\EdgeBundling\BundleEdgeRouting.cs" />
     <Compile Include="GraphSharpComponents\EdgeRouting\EdgeBundling\BundleEdgeRoutingParameters.cs" />
     <Compile Include="GraphSharpComponents\EdgeRouting\EdgeBundling\VectorTools.cs" />
@@ -260,7 +258,6 @@
     <Compile Include="GraphSharpComponents\GraphHideHelper.cs" />
     <Compile Include="GraphSharpComponents\GraphSharpExtensions.cs" />
     <Compile Include="GraphSharpComponents\HierarchicalGraph.cs" />
-    <Compile Include="GraphSharpComponents\IAlgorithm.cs" />
     <Compile Include="GraphSharpComponents\IAlgorithmParameters.cs" />
     <Compile Include="GraphSharpComponents\IHierarchicalBidirectionalGraph.cs" />
     <Compile Include="GraphSharpComponents\ISoftMutableGraph.cs" />

@@ -13,15 +13,9 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Circular
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        readonly IDictionary<TVertex, Size> sizes;
-
-        public CircularLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions, IDictionary<TVertex, Size> vertexSizes, CircularLayoutParameters parameters )
-            : base( visitedGraph, vertexPositions, parameters )
+        public CircularLayoutAlgorithm( TGraph visitedGraph, CircularLayoutParameters parameters )
+            : base( visitedGraph, parameters )
         {
-            //Contract.Requires( vertexSizes != null );
-            //Contract.Requires( visitedGraph.Vertices.All( v => vertexSizes.ContainsKey( v ) ) );
-
-            sizes = vertexSizes;
         }
 
         protected override void InternalCompute()
@@ -32,7 +26,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Circular
             int i = 0;
             foreach ( var v in VisitedGraph.Vertices )
             {
-                Size s = sizes[v];
+                Size s = VertexSizes[v];
                 halfSize[i] = Math.Sqrt( s.Width * s.Width + s.Height * s.Height ) * 0.5;
                 perimeter += halfSize[i] * 2;
                 i++;

@@ -370,7 +370,8 @@
                             <local:GraphAreaExample x:Name="tst_Area"/>
                         </graphxctrl:ZoomControl>
                         <DockPanel Grid.Column="1" Grid.RowSpan="4" LastChildFill="False">
-                            <Button Margin="3" Content="Random" Height="25" DockPanel.Dock="Top" Name="tst_but_gen"/>
+                            <Button Margin="3" Content="RandomP" Height="25" DockPanel.Dock="Top" Name="tst_but_gen"/>
+                            <Button Margin="3" Content="Fake Layout" Height="25" DockPanel.Dock="Top" Name="tst_but_fakeLayout"/>
                         </DockPanel>
                     </Grid>
                 </TabItem>

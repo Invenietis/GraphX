@@ -16,7 +16,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical
             /// <summary>
             /// This method ensures that the layer is a real alternating
             /// layer: starts with a SegmentContainer followed by a Vertex,
-            /// another SegmentContainer, another Vertex, ... ending wiht 
+            /// another SegmentContainer, another Vertex, ... ending with 
             /// a SegmentContainer.
             /// </summary>
             public void EnsureAlternatingAndPositions()

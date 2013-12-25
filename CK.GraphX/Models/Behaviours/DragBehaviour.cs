@@ -135,7 +135,7 @@ namespace GraphX
 		{
 			var obj = sender as DependencyObject;
             var vc = obj as VertexControl;
-            if (vc != null && !vc.RootArea.UseNativeObjectArrange && vc.RootArea.GetAllVertexControls().Length == 1)
+            if (vc != null && !vc.RootArea.UseNativeObjectArrange && vc.RootArea.GetAllVertexControls().Count == 1)
             {
                 Debug.WriteLine("OnDragStarted() -> Area.UseNativeObjectArrange isn't set and we have only 1 vertex. Dragging is prohibited.");
                 return;

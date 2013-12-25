@@ -18,15 +18,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Compound.FDP
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        /*[ContractInvariantMethod]
-        private void InvariantContracts()
-        {
-            Contract.Invariant(1 <= _phase && _phase <= 3);
-            Contract.Invariant(_treeGrowingStep > 0);
-        }*/
-
         private double _temperature = 0;
-        //private double _temperatureDelta; //need to be initialized
         private readonly double _temperatureLambda = 0.99;
         private readonly Random rnd = new Random(DateTime.Now.Millisecond);
 

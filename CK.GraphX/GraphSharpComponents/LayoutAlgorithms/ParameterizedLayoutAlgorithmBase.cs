@@ -7,27 +7,9 @@ using System.Windows;
 
 namespace GraphX.GraphSharp.Algorithms.Layout
 {
-	/*public abstract class ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TVertexInfo, TEdgeInfo, TParam> : ParameterizedLayoutAlgorithmBase<TVertex, TEdge, TGraph, TParam>
-		where TVertex : class
-		where TEdge : IEdge<TVertex>
-		where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
-		where TParam : class, ILayoutParameters
-	{
-
-		protected ParameterizedLayoutAlgorithmBase( TGraph visitedGraph )
-			: base( visitedGraph, null, null ) { }
-
-		protected ParameterizedLayoutAlgorithmBase( TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions,
-		                                       TParam oldParameters )
-			: base( visitedGraph, vertexPositions, oldParameters )
-		{
-		}
-
-	}*/
-
     /// <summary>
     /// Use this class as a base class for your layout algorithm 
-    /// if it's parameter class has a default contstructor.
+    /// if it's parameter class has a default constructor.
     /// </summary>
     /// <typeparam name="TVertex">The type of the vertices.</typeparam>
     /// <typeparam name="TEdge">The type of the edges.</typeparam>
@@ -44,8 +26,8 @@ namespace GraphX.GraphSharp.Algorithms.Layout
         {
         }
 
-        protected DefaultParameterizedLayoutAlgorithmBase(TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions, TParam oldParameters) 
-            : base(visitedGraph, vertexPositions, oldParameters)
+        protected DefaultParameterizedLayoutAlgorithmBase(TGraph visitedGraph, TParam oldParameters) 
+            : base(visitedGraph, oldParameters)
         {
         }
 
@@ -77,28 +59,24 @@ namespace GraphX.GraphSharp.Algorithms.Layout
 		public TraceSource TraceSource { get; protected set; }
 		#endregion
 
-		#region Constructors
-
 		protected ParameterizedLayoutAlgorithmBase( TGraph visitedGraph )
-			: this( visitedGraph, null, null ) { }
+			: this( visitedGraph, null ) 
+        { 
+        }
 
-		protected ParameterizedLayoutAlgorithmBase( TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions,
-		                                       TParam oldParameters )
-			: base( visitedGraph, vertexPositions )
+		protected ParameterizedLayoutAlgorithmBase( TGraph visitedGraph, TParam oldParameters )
+			: base( visitedGraph )
 		{
 			InitParameters( oldParameters );
 			TraceSource = new TraceSource( "LayoutAlgorithm", SourceLevels.All );
 		}
-		#endregion
-
-		#region Initializers
 
         protected abstract TParam DefaultParameters { get; } 
 
 		/// <summary>
 		/// Initializes the parameters (cloning or creating new parameter object with default values).
 		/// </summary>
-		/// <param name="oldParameters">Parameters from a prevorious layout. If it is null, 
+		/// <param name="oldParameters">Parameters from a previous layout. If it is null, 
 		/// the parameters will be set to the default ones.</param>
 		protected void InitParameters( TParam oldParameters )
 		{
@@ -139,32 +117,25 @@ namespace GraphX.GraphSharp.Algorithms.Layout
 		/// </summary>
 		/// <param name="width">Width of the bounding box.</param>
 		/// <param name="height">Height of the bounding box.</param>
-		/// <param name="translate_x">Translates the generated x coordinate.</param>
-		/// <param name="translate_y">Translates the generated y coordinate.</param>
-		protected virtual void InitializeWithRandomPositions( double width, double height, double translate_x, double translate_y )
+		/// <param name="xOffset">Translates the generated x coordinate.</param>
+		/// <param name="yOffset">Translates the generated y coordinate.</param>
+		protected virtual void InitializeWithRandomPositions( double width, double height, double xOffset, double yOffset )
 		{
 			var rnd = new Random( DateTime.Now.Millisecond );
 
 			//initialize with random position
 			foreach ( TVertex v in VisitedGraph.Vertices )
 			{
-				//for vertices without assigned position
-				if ( !VertexPositions.ContainsKey( v ) )
-				{
-					VertexPositions[v] =
-						new Point(
-							Math.Max( double.Epsilon, rnd.NextDouble() * width + translate_x ),
-							Math.Max( double.Epsilon, rnd.NextDouble() * height + translate_y ) );
-				}
+				VertexPositions[v] =
+					new Point(
+						Math.Max( double.Epsilon, rnd.NextDouble() * width + xOffset ),
+						Math.Max( double.Epsilon, rnd.NextDouble() * height + yOffset ) );
 			}
 		}
 
 		protected virtual void NormalizePositions()
 		{
-			lock ( SyncRoot )
-			{
-				NormalizePositions( VertexPositions );
-			}
+			NormalizePositions( VertexPositions );
 		}
 
 		protected static void NormalizePositions( IDictionary<TVertex, Point> vertexPositions )
@@ -189,6 +160,5 @@ namespace GraphX.GraphSharp.Algorithms.Layout
 				vertexPositions[v.Key] = pos;
 			}
 		}
-		#endregion
 	}
 }

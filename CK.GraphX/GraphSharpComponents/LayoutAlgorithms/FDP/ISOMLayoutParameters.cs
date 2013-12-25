@@ -12,7 +12,7 @@
 			set
 			{
 				_width = value;
-				NotifyPropertyChanged("Width");
+				RaisePropertyChanged("Width");
 			}
 		}
 
@@ -26,7 +26,7 @@
 			set
 			{
 				_height = value;
-				NotifyPropertyChanged("Height");
+				RaisePropertyChanged("Height");
 			}
 		}
 
@@ -40,7 +40,7 @@
 			set
 			{
 				maxEpoch = value;
-				NotifyPropertyChanged("MaxEpoch");
+				RaisePropertyChanged("MaxEpoch");
 			}
 		}
 
@@ -54,7 +54,7 @@
 			set
 			{
 				_radiusConstantTime = value;
-				NotifyPropertyChanged("RadiusConstantTime");
+				RaisePropertyChanged("RadiusConstantTime");
 			}
 		}
 
@@ -68,7 +68,7 @@
 			set
 			{
 				_initialRadius = value;
-				NotifyPropertyChanged("InitialRadius");
+				RaisePropertyChanged("InitialRadius");
 			}
 		}
 
@@ -82,7 +82,7 @@
 			set
 			{
 				_minRadius = value;
-				NotifyPropertyChanged("MinRadius");
+				RaisePropertyChanged("MinRadius");
 			}
 		}
 
@@ -96,7 +96,7 @@
 			set
 			{
 				_initialAdaption = value;
-				NotifyPropertyChanged("InitialAdaption");
+				RaisePropertyChanged("InitialAdaption");
 			}
 		}
 
@@ -110,7 +110,7 @@
 			set
 			{
 				_minAdaption = value;
-				NotifyPropertyChanged("MinAdaption");
+				RaisePropertyChanged("MinAdaption");
 			}
 		}
 
@@ -124,7 +124,7 @@
 			set
 			{
 				_coolingFactor = value;
-				NotifyPropertyChanged("CoolingFactor");
+				RaisePropertyChanged("CoolingFactor");
 			}
 		}
 	}

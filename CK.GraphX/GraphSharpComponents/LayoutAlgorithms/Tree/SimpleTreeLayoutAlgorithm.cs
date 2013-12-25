@@ -16,18 +16,13 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Tree
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
         private BidirectionalGraph<TVertex, Edge<TVertex>> spanningTree;
-        readonly IDictionary<TVertex, Size> sizes;
         readonly IDictionary<TVertex, VertexData> data = new Dictionary<TVertex, VertexData>();
         readonly IList<Layer> layers = new List<Layer>();
         int direction;
 
-        public SimpleTreeLayoutAlgorithm( TGraph visitedGraph, IDictionary<TVertex, Point> vertexPositions, IDictionary<TVertex, Size> vertexSizes, SimpleTreeLayoutParameters parameters )
-            : base( visitedGraph, vertexPositions, parameters )
+        public SimpleTreeLayoutAlgorithm( TGraph visitedGraph, SimpleTreeLayoutParameters parameters )
+            : base( visitedGraph, parameters )
         {
-            //Contract.Requires( vertexSizes != null );
-            //Contract.Requires( visitedGraph.Vertices.All( v => vertexSizes.ContainsKey( v ) ) );
-
-            sizes = new Dictionary<TVertex, Size>( vertexSizes );
         }
 
         protected override void InternalCompute()
@@ -35,8 +30,8 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Tree
             if ( Parameters.Direction == LayoutDirection.LeftToRight || Parameters.Direction == LayoutDirection.RightToLeft )
             {
                 //change the sizes
-                foreach ( var sizePair in sizes.ToArray() )
-                    sizes[sizePair.Key] = new Size( sizePair.Value.Height, sizePair.Value.Width );
+                foreach( var sizePair in VertexSizes.ToArray() )
+                    VertexSizes[sizePair.Key] = new Size( sizePair.Value.Height, sizePair.Value.Width );
             }
 
             if ( Parameters.Direction == LayoutDirection.RightToLeft || Parameters.Direction == LayoutDirection.BottomToTop )
@@ -88,7 +83,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Tree
                 layers.Add( new Layer() );
 
             var layer = layers[l];
-            var size = sizes[v];
+            var size = VertexSizes[v];
             var d = new VertexData { parent = parent };
             data[v] = d;
 
@@ -142,7 +137,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Tree
             {
                 foreach ( var v in layer.Vertices )
                 {
-                    Size size = sizes[v];
+                    Size size = VertexSizes[v];
                     var d = data[v];
                     if ( d.parent != null )
                     {

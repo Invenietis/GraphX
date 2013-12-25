@@ -15,8 +15,6 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical
         where TEdge : IEdge<TVertex>
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
     {
-        private readonly Random _rnd = new Random(DateTime.Now.Millisecond);
-
         private int[] _crossCounts;
 
         private IList<Edge<Data>>[] _sparseCompactionByLayerBackup;
@@ -570,7 +568,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical
             int endIndex = startIndex + count;
             for (int i = startIndex; i < endIndex; i++) 
             {
-                vertices[i].PermutationIndex = _rnd.Next(count);
+                vertices[i].PermutationIndex = Randomizer.Next(count);
             }
             return true;
         }

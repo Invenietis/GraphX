@@ -102,26 +102,12 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Compound.FDP
                 new Size(), new Thickness(),
                 CompoundVertexInnerLayoutType.Automatic);
 
-        #region Constructors
-        public CompoundFDPLayoutAlgorithm(
-            TGraph visitedGraph,
-            IDictionary<TVertex, Size> vertexSizes,
-            IDictionary<TVertex, Thickness> vertexBorders,
-            IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes)
-            : this(visitedGraph, vertexSizes, vertexBorders, layoutTypes, null, null)
-        {
-        }
-
-        public CompoundFDPLayoutAlgorithm(
-            TGraph visitedGraph,
-            IDictionary<TVertex, Size> vertexSizes,
+        public CompoundFDPLayoutAlgorithm( TGraph visitedGraph,
             IDictionary<TVertex, Thickness> vertexBorders,
             IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes,
-            IDictionary<TVertex, Point> vertexPositions,
             CompoundFDPLayoutParameters oldParameters)
-            : base(visitedGraph, vertexPositions, oldParameters)
+            : base(visitedGraph, oldParameters)
         {
-            _vertexSizes = vertexSizes;
             _vertexBorders = vertexBorders;
             _layoutTypes = layoutTypes;
 
@@ -130,14 +116,11 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Compound.FDP
             else
                 _compoundGraph = new CompoundGraph<TVertex, TEdge>(VisitedGraph);
         }
-        #endregion
 
         public int LevelOfVertex(TVertex vertex)
         {
             return _vertexDatas[vertex].Level;
         }
-
-        #region ICompoundLayoutAlgorithm<TVertex,TEdge,TGraph> Members
 
         public IDictionary<TVertex, Size> InnerCanvasSizes
         {
@@ -148,10 +131,6 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Compound.FDP
                     kvp => kvp.Value.InnerCanvasSize);
             }
         }
-
-        #endregion
-
-        #region Nested type: CompoundVertexData
 
         /// <summary>
         /// Data for the compound vertices.
@@ -285,10 +264,6 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Compound.FDP
             }
         }
 
-        #endregion
-
-        #region Nested type: SimpleVertexData
-
         private class SimpleVertexData : VertexData
         {
             /// <summary>
@@ -315,10 +290,6 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Compound.FDP
                 Position += force;
             }
         }
-
-        #endregion
-
-        #region Nested type: VertexData
 
         /// <summary>
         /// Data for the simple vertices.
@@ -468,6 +439,5 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Compound.FDP
             }
         }
 
-        #endregion
     }
 }

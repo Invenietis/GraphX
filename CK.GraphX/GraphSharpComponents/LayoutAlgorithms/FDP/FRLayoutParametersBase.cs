@@ -28,7 +28,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
 			{
 				_vertexCount = value;
 				UpdateParameters();
-				NotifyPropertyChanged( "VertexCount" );
+				RaisePropertyChanged( "VertexCount" );
 			}
 		}
 
@@ -41,13 +41,13 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
 		private void CalculateConstantOfRepulsion()
 		{
 			ConstantOfRepulsion = Math.Pow( K * _repulsiveMultiplier, 2 );
-			NotifyPropertyChanged( "ConstantOfRepulsion" );
+			RaisePropertyChanged( "ConstantOfRepulsion" );
 		}
 
 		private void CalculateConstantOfAttraction()
 		{
 			ConstantOfAttraction = K * _attractionMultiplier;
-			NotifyPropertyChanged( "ConstantOfAttraction" );
+			RaisePropertyChanged( "ConstantOfAttraction" );
 		}
 
 		/// <summary>
@@ -75,7 +75,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
 			{
 				_attractionMultiplier = value;
 				CalculateConstantOfAttraction();
-				NotifyPropertyChanged( "AttractionMultiplier" );
+				RaisePropertyChanged( "AttractionMultiplier" );
 			}
 		}
 
@@ -94,7 +94,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
 			{
 				_repulsiveMultiplier = value;
 				CalculateConstantOfRepulsion();
-				NotifyPropertyChanged( "RepulsiveMultiplier" );
+				RaisePropertyChanged( "RepulsiveMultiplier" );
 			}
 		}
 
@@ -107,7 +107,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
 			set
 			{
 				_iterationLimit = value;
-				NotifyPropertyChanged( "IterationLimit" );
+				RaisePropertyChanged( "IterationLimit" );
 			}
 		}
 
@@ -120,7 +120,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
 			set
 			{
 				_lambda = value;
-				NotifyPropertyChanged( "Lamdba" );
+				RaisePropertyChanged( "Lamdba" );
 			}
 		}
 
@@ -133,7 +133,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
 			set
 			{
 				_coolingFunction = value;
-				NotifyPropertyChanged( "CoolingFunction" );
+				RaisePropertyChanged( "CoolingFunction" );
 			}
 		}
 

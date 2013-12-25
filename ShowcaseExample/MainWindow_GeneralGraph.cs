@@ -263,7 +263,7 @@ namespace ShowcaseExample
 
         private void AssignExternalLayoutAlgorithm(BidirectionalGraph<DataVertex, DataEdge> graph)
         {
-            gg_Area.ExternalLayoutAlgorithm = gg_Area.AlgorithmFactory.CreateLayoutAlgorithm(LayoutAlgorithmTypeEnum.ISOM, graph, null, null, null);
+            gg_Area.ExternalLayoutAlgorithm = gg_Area.AlgorithmFactory.CreateLayoutAlgorithm(LayoutAlgorithmTypeEnum.ISOM, graph, null);
         }
 
         private void gg_oralgo_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

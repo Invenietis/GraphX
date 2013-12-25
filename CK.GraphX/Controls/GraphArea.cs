@@ -1,19 +1,20 @@
-using GraphX.GraphSharp.Algorithms.EdgeRouting;
-using GraphX.GraphSharp.Algorithms.Layout;
-using GraphX.GraphSharp.Algorithms.OverlapRemoval;
-using GraphX.Controls;
-using GraphX.DesignerExampleData;
-using GraphX.Models;
-using QuickGraph;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
+using GraphX.Controls;
+using GraphX.DesignerExampleData;
+using GraphX.GraphSharp.Algorithms.EdgeRouting;
+using GraphX.GraphSharp.Algorithms.Layout;
+using GraphX.GraphSharp.Algorithms.OverlapRemoval;
+using GraphX.Models;
 using Microsoft.Win32;
+using QuickGraph;
 using YAXLib;
 
 namespace GraphX
@@ -338,10 +339,10 @@ namespace GraphX
         }
 
         /// <summary>
-        /// Returns all existing VertexControls addded into the layout
+        /// Returns all existing VertexControls added into the layout.
         /// </summary>
         /// <returns></returns>
-        public override VertexControl[] GetAllVertexControls() { return VertexList.Values.ToArray(); }
+        public override ICollection<VertexControl> GetAllVertexControls() { return VertexList.Values; }
 
         #region Remove controls
 
@@ -528,7 +529,7 @@ namespace GraphX
             //measure if needed and get all vertex sizes
             if (!IsMeasureValid) Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             var vertexSizes = new Dictionary<TVertex, Size>(VertexList.Count);
-            //go through the vertex presenters and get the actual layoutpositions
+            //go through the vertex presenters and get the actual layout positions
             foreach (var vc in VertexList) vertexSizes[vc.Key] = new Size(vc.Value.ActualWidth, vc.Value.ActualHeight);
             return vertexSizes;
         }
@@ -594,6 +595,8 @@ namespace GraphX
         {
             if (VertexList.Count == 0 || Graph == null) return; // no vertexes == no edges
             Dictionary<TVertex, Size> vertexSizes = null;
+            Dictionary<TVertex, Point> vertexPos = null;
+
             IExternalLayout<TVertex> alg = null; //layout algorithm
             Dictionary<TVertex, Rect> rectangles = null; //rectangled size data
             IExternalOverlapRemoval<TVertex> overlap = null;//overlap removal algorithm
@@ -603,18 +606,16 @@ namespace GraphX
 
             dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
             {
-                UpdateLayout(); //update layout so we can get actual control sizes
-                if ((ExternalLayoutAlgorithm == null && AlgorithmFactory.NeedSizes(DefaultLayoutAlgorithm)) ||
-                    (ExternalLayoutAlgorithm != null && ExternalLayoutAlgorithm.NeedVertexSizes))
-                    vertexSizes = GetVertexSizes();
+                UpdateLayout(); // Update layout so we can get actual control sizes
+                vertexSizes = GetVertexSizes();
+                vertexPos = GetVertexPositions();
 
                 //setup layout algorithm
                 if (ExternalLayoutAlgorithm != null)
                 {
                     alg = ExternalLayoutAlgorithm;
-                    if (alg.NeedVertexSizes) alg.VertexSizes = vertexSizes;
                 }
-                else alg = AlgorithmFactory.CreateLayoutAlgorithm(DefaultLayoutAlgorithm, Graph, null, vertexSizes, DefaultLayoutAlgorithmParams);
+                else alg = AlgorithmFactory.CreateLayoutAlgorithm( DefaultLayoutAlgorithm, Graph, DefaultLayoutAlgorithmParams );
                 if (alg == null)
                 {
                     MessageBox.Show("Layout type not supported yet!");
@@ -624,20 +625,19 @@ namespace GraphX
                 //setup overap removal algorithm
 
                 //OR - if default OR algo selected and enabled or we are using external OR algo
-                if ((ExternalOverlapRemovalAlgorithm == null && AlgorithmFactory.NeedOverlapRemoval(DefaultLayoutAlgorithm) && DefaultOverlapRemovalAlgorithm != OverlapRemovalAlgorithmTypeEnum.None) ||
-                    (ExternalOverlapRemovalAlgorithm != null))
+                if( ExternalOverlapRemovalAlgorithm != null
+                    || (DefaultOverlapRemovalAlgorithm != OverlapRemovalAlgorithmTypeEnum.None && AlgorithmFactory.NeedOverlapRemoval( DefaultLayoutAlgorithm )) )
                 {
-                    //setup overlap removal algorythm
+                    //setup overlap removal algorithm
 
                     if (ExternalOverlapRemovalAlgorithm == null)
                     {
-                        //create default OR
+                        // create default OR
                         overlap = AlgorithmFactory.CreateOverlapRemovalAlgorithm(DefaultOverlapRemovalAlgorithm, null, DefaultOverlapRemovalAlgorithmParams);
                     }
                     else
                     {
                         overlap = ExternalOverlapRemovalAlgorithm;
-                        overlap.Rectangles = rectangles;
                     }
                 }
 
@@ -645,7 +645,7 @@ namespace GraphX
 
                 if (ExternalEdgeRoutingAlgorithm == null && DefaultEdgeRoutingAlgorithm != EdgeRoutingAlgorithmTypeEnum.None)
                 {
-                    eralg = AlgorithmFactory.CreateEdgeRoutingAlgorithm(DefaultEdgeRoutingAlgorithm, new Rect(DesiredSize), Graph, null, null, DefaultEdgeRoutingAlgorithmParams);
+                    eralg = AlgorithmFactory.CreateEdgeRoutingAlgorithm( DefaultEdgeRoutingAlgorithm, new Rect(DesiredSize), Graph, null, null, DefaultEdgeRoutingAlgorithmParams);
                 }
                 else if (ExternalEdgeRoutingAlgorithm != null)
                 {
@@ -655,11 +655,9 @@ namespace GraphX
                 }
             }));
             if (alg == null) return;
-
-            alg.Compute();
+            var resultCoords = alg.Compute( new CancellationToken(), v => { Point p; vertexPos.TryGetValue( v, out p ); return p; }, v => { Size s; vertexSizes.TryGetValue( v, out s ); return s; } );
             if (_worker != null) _worker.ReportProgress(33, 0);
-            //result data storage
-            var resultCoords = alg.VertexPositions;
+
             //overlap removal
             if (overlap != null)
             {

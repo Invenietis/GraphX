@@ -41,28 +41,11 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical
 
         public IDictionary<TEdge, Point[]> EdgeRoutes { get; private set; }
 
-        #region Constructors
-        public SugiyamaLayoutAlgorithm(
-            TGraph visitedGraph,
-            IDictionary<TVertex, Size> vertexSizes,
-            IDictionary<TVertex, Point> vertexPositions,
-            SugiyamaLayoutParameters parameters,
-            Func<TEdge, EdgeTypes> edgePredicate )
-            : base( visitedGraph, vertexPositions, parameters )
+        public SugiyamaLayoutAlgorithm( TGraph visitedGraph, SugiyamaLayoutParameters parameters, Func<TEdge, EdgeTypes> edgePredicate )
+            : base( visitedGraph, parameters )
         {
             _edgePredicate = edgePredicate;
             EdgeRoutes = new Dictionary<TEdge, Point[]>();
-
-            ConvertGraph( vertexSizes );
-        }
-
-        public SugiyamaLayoutAlgorithm(
-            TGraph visitedGraph,
-            IDictionary<TVertex, Size> vertexSizes,
-            SugiyamaLayoutParameters parameters,
-            Func<TEdge, EdgeTypes> edgePredicate )
-            : this( visitedGraph, vertexSizes, null, parameters, edgePredicate )
-        {
         }
 
         /// <summary>
@@ -95,12 +78,11 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical
                 _graph.AddEdge( wrapped );
             }
         }
-        #endregion
 
         #region Filters - used in the preparation phase
         /// <summary>
         /// Removes the cycles from the given graph.
-        /// It reverts some edges, so the cycles disappeares.
+        /// It reverts some edges, so the cycles disappear.
         /// </summary>
         private void FilterCycles()
         {
@@ -857,6 +839,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical
 
         protected override void InternalCompute()
         {
+            ConvertGraph( VertexSizes );
             //
             //Phase 1 - Filters & Removals
             //

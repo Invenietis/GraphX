@@ -7,39 +7,31 @@ using System.Windows;
 
 namespace GraphX.GraphSharp.Algorithms.Layout
 {
-    public class RandomLayoutAlgorithm<TVertex, TEdge, TGraph> : ILayoutAlgorithm<TVertex, TEdge, TGraph>
+    public class RandomLayoutAlgorithm<TVertex, TEdge, TGraph> : LayoutAlgorithmBase<TVertex, TEdge, TGraph>
         where TVertex : class
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        private TGraph Graph;
-        private Random Rnd = new Random((int)DateTime.Now.Ticks);
+        readonly Random _random = new Random();
 
         public RandomLayoutAlgorithm(TGraph graph)
+            : base( graph )
         {
-            Graph = graph;
-        }        
-    
-        public void Compute()
-        {
-            foreach (var item in Graph.Vertices)
-                vertexPositions.Add(item, new Point(Rnd.Next(0, 2000), Rnd.Next(0, 2000)));
         }
 
-        IDictionary<TVertex, Point> vertexPositions = new Dictionary<TVertex, Point>();
+        public bool RandomOnlyNewVertices { get; set; }
 
-        public IDictionary<TVertex, Point> VertexPositions { get { return vertexPositions; } }
-
-        public IDictionary<TVertex, Size> VertexSizes { get; set; }
-
-        public bool NeedVertexSizes
+        protected override Point OnOriginalPosition( TVertex v, Point p )
         {
-            get { return false; }
+            if( RandomOnlyNewVertices )
+            {
+                return new Point( _random.Next( 0, 2000 ), _random.Next( 0, 2000 ) );
+            }
+            return p.IsDefined() ? p : new Point( _random.Next( 0, 2000 ), _random.Next( 0, 2000 ) );
         }
 
-        public TGraph VisitedGraph
+        protected override void InternalCompute()
         {
-            get { return Graph; }
         }
     }
 }
