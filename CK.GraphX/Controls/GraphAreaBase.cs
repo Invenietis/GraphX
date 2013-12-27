@@ -233,7 +233,6 @@ namespace GraphX
         public virtual void ComputeEdgeRoutesByVertex(VertexControl vc, bool VertexDataNeedUpdate = true) { }
         #endregion
 
-
         public GraphAreaBase()
         {
             UseNativeObjectArrange = true;

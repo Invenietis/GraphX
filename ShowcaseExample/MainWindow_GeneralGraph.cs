@@ -12,9 +12,7 @@ using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using ShowcaseExample.Models;
 using GraphX.Xceed.Wpf.Toolkit.Zoombox;
-using GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical;
 using GraphX.GraphSharp.Algorithms.OverlapRemoval;
-using GraphX.GraphSharp.Algorithms.Layout.Compound.FDP;
 
 namespace ShowcaseExample
 {

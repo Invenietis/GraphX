@@ -1,18 +1,11 @@
 ﻿using GraphX.GraphSharp;
 using GraphX.GraphSharp.Algorithms.EdgeRouting;
-using GraphX.GraphSharp.Algorithms.Layout;
-using GraphX.GraphSharp.Algorithms.Layout.Simple.Circular;
-using GraphX.GraphSharp.Algorithms.Layout.Simple.FDP;
-using GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical;
-using GraphX.GraphSharp.Algorithms.Layout.Simple.Tree;
 using GraphX.GraphSharp.Algorithms.OverlapRemoval;
 using QuickGraph;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using GraphX.GraphSharp.Algorithms.Layout.Compound.FDP;
-using GraphX.GraphSharp.Algorithms.Layout.Compound;
 using GraphX.GraphSharpComponents.EdgeRouting;
 
 namespace GraphX.Models

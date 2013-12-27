@@ -1,5 +1,4 @@
-﻿using GraphX.GraphSharp.Algorithms.Layout.Simple.FDP;
-using GraphX.GraphSharp.Algorithms.OverlapRemoval;
+﻿using GraphX.GraphSharp.Algorithms.OverlapRemoval;
 using GraphX.Xceed.Wpf.Toolkit.Zoombox;
 using System;
 using System.Collections.Generic;

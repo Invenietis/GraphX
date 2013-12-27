@@ -191,19 +191,6 @@ namespace GraphX
         }
         #endregion
 
-        #region DP - DefaultLayoutAlgorithmParams
-        public static readonly DependencyProperty DefaultLayoutAlgorithmParamsProperty = DependencyProperty.Register("DefaultLayoutAlgorithmParams", typeof(ILayoutParameters),
-                                        typeof(GraphArea<TVertex, TEdge, TGraph>), new PropertyMetadata(null));
-        /// <summary>
-        /// Gets or sets default layout calculation algorithm parameters
-        /// </summary>
-        public ILayoutParameters DefaultLayoutAlgorithmParams
-        {
-            get { return (ILayoutParameters)GetValue(DefaultLayoutAlgorithmParamsProperty); }
-            set { SetValue(DefaultLayoutAlgorithmParamsProperty, value); }
-        }
-        #endregion        
-
         #region DP - DefaulOverlapRemovalAlgorithmParams
         public static readonly DependencyProperty DefaultOverlapRemovalAlgorithmParamsProperty = DependencyProperty.Register("DefaultOverlapRemovalAlgorithmParams", typeof(IOverlapRemovalParameters),
                                         typeof(GraphArea<TVertex, TEdge, TGraph>), new PropertyMetadata(null));
@@ -243,8 +230,6 @@ namespace GraphX
             set { SetValue(AsyncComputeProperty, value); }
         }
         #endregion
-
-
 
         #endregion
 
