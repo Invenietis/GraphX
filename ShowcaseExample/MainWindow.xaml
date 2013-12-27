@@ -61,8 +61,6 @@
                             </GroupBox>
                             <GroupBox Header="Layout algorithm" DockPanel.Dock="Top">
                                 <DockPanel LastChildFill="False">
-                                    <ComboBox IsReadOnly="True" Name="gg_layalgo" SelectionChanged="gg_layalgo_SelectionChanged" Margin="3" DockPanel.Dock="Top"/>
-                                    <CheckBox Name="gg_useExternalLayAlgo" Checked="gg_useExternalLayAlgo_Checked" Unchecked="gg_useExternalLayAlgo_Checked" Margin="3" Content="Use external algorithm"/>
                                 </DockPanel>
                             </GroupBox>
 

@@ -18,8 +18,8 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
 		private int radius;
 		#endregion
 
-		public ISOMLayoutAlgorithm( TGraph visitedGraph, ISOMLayoutParameters oldParameters )
-			: base( visitedGraph, oldParameters )
+		public ISOMLayoutAlgorithm( ISOMLayoutParameters oldParameters )
+			: base( oldParameters )
 		{
 			Init( oldParameters );
 		}

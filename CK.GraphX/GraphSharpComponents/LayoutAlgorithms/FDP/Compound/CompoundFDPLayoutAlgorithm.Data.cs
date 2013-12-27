@@ -102,11 +102,8 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Compound.FDP
                 new Size(), new Thickness(),
                 CompoundVertexInnerLayoutType.Automatic);
 
-        public CompoundFDPLayoutAlgorithm( TGraph visitedGraph,
-            IDictionary<TVertex, Thickness> vertexBorders,
-            IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes,
-            CompoundFDPLayoutParameters oldParameters)
-            : base(visitedGraph, oldParameters)
+        public CompoundFDPLayoutAlgorithm( IDictionary<TVertex, Thickness> vertexBorders, IDictionary<TVertex, CompoundVertexInnerLayoutType> layoutTypes, CompoundFDPLayoutParameters oldParameters )
+            : base(oldParameters)
         {
             _vertexBorders = vertexBorders;
             _layoutTypes = layoutTypes;

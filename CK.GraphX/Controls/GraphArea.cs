@@ -125,17 +125,16 @@ namespace GraphX
 
         #region Dependency properties
 
-        #region DP - ExternalLayoutAlgorithm
-        public static readonly DependencyProperty ExternalLayoutAlgorithmProperty = DependencyProperty.Register("ExternalLayoutAlgorithm", typeof(IExternalLayout<TVertex>),
+        #region DP - LayoutAlgorithm
+        public static readonly DependencyProperty LayoutAlgorithmProperty = DependencyProperty.Register("LayoutAlgorithm", typeof(ILayoutAlgorithm<TVertex,TEdge,TGraph>),
                                         typeof(GraphArea<TVertex, TEdge, TGraph>), new PropertyMetadata(null));
         /// <summary>
-        ///Gets or sets user-defined external layout calculation algorithm that implements ILayoutAlgorithm interface
-        ///This one will be used instead of default algo if specified
+        ///Gets or the layout calculation algorithm.
         /// </summary>
-        public IExternalLayout<TVertex> ExternalLayoutAlgorithm
+        public ILayoutAlgorithm<TVertex, TEdge, TGraph> LayoutAlgorithm
         {
-            get { return (IExternalLayout<TVertex>)GetValue(ExternalLayoutAlgorithmProperty); }
-            set { SetValue(ExternalLayoutAlgorithmProperty, value); }
+            get { return (ILayoutAlgorithm<TVertex, TEdge, TGraph>)GetValue( LayoutAlgorithmProperty ); }
+            set { SetValue(LayoutAlgorithmProperty, value); }
         }
         #endregion
 
@@ -165,19 +164,6 @@ namespace GraphX
             set { SetValue(ExternalEdgeRoutingAlgorithmProperty, value); }
         }
         #endregion
-
-        #region DP - DefaultLayoutAlgorithm
-        public static readonly DependencyProperty DefaultLayoutAlgorithmProperty = DependencyProperty.Register("DefaultLayoutAlgorithm", typeof(LayoutAlgorithmTypeEnum),
-                                        typeof(GraphArea<TVertex, TEdge, TGraph>), new PropertyMetadata(LayoutAlgorithmTypeEnum.LinLog));
-        /// <summary>
-        /// Gets or sets default layout calculation algorithm type
-        /// </summary>
-        public LayoutAlgorithmTypeEnum DefaultLayoutAlgorithm
-        {
-            get { return (LayoutAlgorithmTypeEnum)GetValue(DefaultLayoutAlgorithmProperty); }
-            set { SetValue(DefaultLayoutAlgorithmProperty, value); }
-        }
-        #endregion        
         
         #region DP - DefaulOverlapRemovalAlgorithm
         public static readonly DependencyProperty DefaultOverlapRemovalAlgorithmProperty = DependencyProperty.Register("DefaultOverlapRemovalAlgorithm", typeof(OverlapRemovalAlgorithmTypeEnum),
@@ -266,7 +252,7 @@ namespace GraphX
         {
             Graph = (TGraph)Activator.CreateInstance(typeof(TGraph));
             AlgorithmFactory = new AlgorithmFactory<TVertex, TEdge, TGraph>();
-            AlgorithmStorage = new AlgorithmStorage<TVertex, TEdge>(null, null, null);
+            AlgorithmStorage = new AlgorithmStorage<TVertex, TEdge>( null, null);
             StateStorage = new StateStorage<TVertex, TEdge, TGraph>(this);
 
             EdgeCurvingTolerance = 8;
@@ -597,7 +583,7 @@ namespace GraphX
             Dictionary<TVertex, Size> vertexSizes = null;
             Dictionary<TVertex, Point> vertexPos = null;
 
-            IExternalLayout<TVertex> alg = null; //layout algorithm
+            ILayoutAlgorithm<TVertex,TEdge,TGraph> alg = null; //layout algorithm
             Dictionary<TVertex, Rect> rectangles = null; //rectangled size data
             IExternalOverlapRemoval<TVertex> overlap = null;//overlap removal algorithm
             IExternalEdgeRouting<TVertex, TEdge> eralg = null;
@@ -611,25 +597,14 @@ namespace GraphX
                 vertexPos = GetVertexPositions();
 
                 //setup layout algorithm
-                if (ExternalLayoutAlgorithm != null)
-                {
-                    alg = ExternalLayoutAlgorithm;
-                }
-                else alg = AlgorithmFactory.CreateLayoutAlgorithm( DefaultLayoutAlgorithm, Graph, DefaultLayoutAlgorithmParams );
-                if (alg == null)
-                {
-                    MessageBox.Show("Layout type not supported yet!");
-                    return;
-                }
+                alg = LayoutAlgorithm;
+                if( alg == null ) alg = new RandomLayoutAlgorithm<TVertex,TEdge,TGraph>();
 
-                //setup overap removal algorithm
-
+                //setup overLap removal algorithm
                 //OR - if default OR algo selected and enabled or we are using external OR algo
-                if( ExternalOverlapRemovalAlgorithm != null
-                    || (DefaultOverlapRemovalAlgorithm != OverlapRemovalAlgorithmTypeEnum.None && AlgorithmFactory.NeedOverlapRemoval( DefaultLayoutAlgorithm )) )
+                if( ExternalOverlapRemovalAlgorithm != null || DefaultOverlapRemovalAlgorithm != OverlapRemovalAlgorithmTypeEnum.None )
                 {
                     //setup overlap removal algorithm
-
                     if (ExternalOverlapRemovalAlgorithm == null)
                     {
                         // create default OR
@@ -642,7 +617,6 @@ namespace GraphX
                 }
 
                 //Edge Routing algorithm
-
                 if (ExternalEdgeRoutingAlgorithm == null && DefaultEdgeRoutingAlgorithm != EdgeRoutingAlgorithmTypeEnum.None)
                 {
                     eralg = AlgorithmFactory.CreateEdgeRoutingAlgorithm( DefaultEdgeRoutingAlgorithm, new Rect(DesiredSize), Graph, null, null, DefaultEdgeRoutingAlgorithmParams);
@@ -655,7 +629,9 @@ namespace GraphX
                 }
             }));
             if (alg == null) return;
-            var resultCoords = alg.Compute( new CancellationToken(), v => { Point p; vertexPos.TryGetValue( v, out p ); return p; }, v => { Size s; vertexSizes.TryGetValue( v, out s ); return s; } );
+            var resultCoords = alg.Compute( new CancellationToken(), Graph, 
+                                                v => { Point p; return vertexPos.TryGetValue( v, out p ) ? p : new Point( Double.NaN, Double.NaN ); }, 
+                                                v => { Size s; return vertexSizes.TryGetValue( v, out s ) ? s : new Size( Double.NaN, Double.NaN ); } );
             if (_worker != null) _worker.ReportProgress(33, 0);
 
             //overlap removal
@@ -677,7 +653,7 @@ namespace GraphX
 
             dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
             {
-                AlgorithmStorage = new AlgorithmStorage<TVertex, TEdge>(alg, overlap, eralg);
+                AlgorithmStorage = new AlgorithmStorage<TVertex, TEdge>(overlap, eralg);
 
                 if (MoveAnimation != null)
                 {
@@ -1395,7 +1371,6 @@ namespace GraphX
             StateStorage.Dispose();
             Graph = null;
             ExternalEdgeRoutingAlgorithm = null;
-            ExternalLayoutAlgorithm = null;
             ExternalOverlapRemovalAlgorithm = null;
             MoveAnimation = null;
             DeleteAnimation = null;

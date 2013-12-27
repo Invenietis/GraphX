@@ -27,8 +27,8 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Tree
 		}
 
 
-		public BalloonTreeLayoutAlgorithm( TGraph visitedGraph, BalloonTreeLayoutParameters oldParameters, TVertex selectedVertex )
-			: base( visitedGraph, oldParameters )
+		public BalloonTreeLayoutAlgorithm( BalloonTreeLayoutParameters oldParameters, TVertex selectedVertex )
+			: base( oldParameters )
 		{
 			this.root = selectedVertex;
 		}

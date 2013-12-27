@@ -20,7 +20,6 @@ namespace ShowcaseExample
     {
         private void ThemedGraph_Constructor()
         {
-            tg_Area.DefaultLayoutAlgorithm = LayoutAlgorithmTypeEnum.KK;
             tg_Area.DefaultOverlapRemovalAlgorithm = OverlapRemovalAlgorithmTypeEnum.FSA;
             tg_Area.DefaultOverlapRemovalAlgorithmParams = dg_Area.AlgorithmFactory.CreateOverlapRemovalParameters(OverlapRemovalAlgorithmTypeEnum.FSA);
             (tg_Area.DefaultOverlapRemovalAlgorithmParams as OverlapRemovalParameters).HorizontalGap = 150;

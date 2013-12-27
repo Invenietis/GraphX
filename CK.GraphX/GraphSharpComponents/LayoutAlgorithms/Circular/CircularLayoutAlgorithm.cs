@@ -13,8 +13,8 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Circular
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        public CircularLayoutAlgorithm( TGraph visitedGraph, CircularLayoutParameters parameters )
-            : base( visitedGraph, parameters )
+        public CircularLayoutAlgorithm( CircularLayoutParameters parameters )
+            : base( parameters )
         {
         }
 

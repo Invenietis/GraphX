@@ -41,8 +41,8 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical
 
         public IDictionary<TEdge, Point[]> EdgeRoutes { get; private set; }
 
-        public SugiyamaLayoutAlgorithm( TGraph visitedGraph, SugiyamaLayoutParameters parameters, Func<TEdge, EdgeTypes> edgePredicate )
-            : base( visitedGraph, parameters )
+        public SugiyamaLayoutAlgorithm( SugiyamaLayoutParameters parameters, Func<TEdge, EdgeTypes> edgePredicate )
+            : base( parameters )
         {
             _edgePredicate = edgePredicate;
             EdgeRoutes = new Dictionary<TEdge, Point[]>();

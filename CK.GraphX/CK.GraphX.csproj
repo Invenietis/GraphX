@@ -49,7 +49,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <DocumentationFile>bin\Release\CK.GraphX.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -293,7 +294,6 @@
     <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.VertexLayer.cs" />
     <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.VertexLayerCollection.cs" />
     <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\IExternalLayout.cs" />
     <Compile Include="GraphSharpComponents\LayoutAlgorithms\ILayoutAlgorithm.cs" />
     <Compile Include="GraphSharpComponents\LayoutAlgorithms\ILayoutInfoIterationEventArgs.cs" />
     <Compile Include="GraphSharpComponents\LayoutAlgorithms\ILayoutIterationEventArgs.cs" />

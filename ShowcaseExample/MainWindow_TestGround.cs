@@ -49,7 +49,6 @@ namespace ShowcaseExample
             _graph.AddEdge(new DataEdge(_graph.Vertices.First(), _graph.Vertices.Last()));
 
             // Resets external algorithms to null to start new fresh graph given that starting algo is a default algo
-            tst_Area.DefaultLayoutAlgorithm = LayoutAlgorithmTypeEnum.SimpleRandom;
             tst_Area.DefaultEdgeRoutingAlgorithm = EdgeRoutingAlgorithmTypeEnum.None;
             //tst_Area.DefaultEdgeRoutingAlgorithmParams = tst_Area.AlgorithmFactory.CreateEdgeRoutingParameters(EdgeRoutingAlgorithmTypeEnum.SimpleER);
             //((SimpleERParameters)tst_Area.DefaultEdgeRoutingAlgorithmParams).BackStep = 10;

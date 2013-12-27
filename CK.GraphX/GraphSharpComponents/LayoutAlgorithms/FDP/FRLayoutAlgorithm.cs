@@ -23,13 +23,8 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
             get { return new FreeFRLayoutParameters(); }
         }
 
-        public FRLayoutAlgorithm(Graph visitedGraph)
-            : base(visitedGraph) 
-        { 
-        }
-
-        public FRLayoutAlgorithm(Graph visitedGraph, FRLayoutParametersBase parameters)
-            : base(visitedGraph, parameters) 
+        public FRLayoutAlgorithm( FRLayoutParametersBase parameters)
+            : base( parameters) 
         { 
         }
 

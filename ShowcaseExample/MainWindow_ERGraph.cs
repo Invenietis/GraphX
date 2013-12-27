@@ -221,7 +221,6 @@ namespace ShowcaseExample
                         break;
                 }
                 
-                erg_Area.DefaultLayoutAlgorithm = LayoutAlgorithmTypeEnum.SimpleRandom;
                 erg_Area.DefaultOverlapRemovalAlgorithm = OverlapRemovalAlgorithmTypeEnum.FSA;
                 erg_Area.DefaultOverlapRemovalAlgorithmParams = erg_Area.AlgorithmFactory.CreateOverlapRemovalParameters(OverlapRemovalAlgorithmTypeEnum.FSA);
                 var oprm = erg_Area.DefaultOverlapRemovalAlgorithmParams as OverlapRemovalParameters;

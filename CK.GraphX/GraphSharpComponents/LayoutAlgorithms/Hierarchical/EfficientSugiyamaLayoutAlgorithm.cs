@@ -51,8 +51,8 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Hierarchical
         /// </summary>
         private readonly IList<IList<SugiVertex>> _layers = new List<IList<SugiVertex>>();
 
-        public EfficientSugiyamaLayoutAlgorithm( TGraph visitedGraph, EfficientSugiyamaLayoutParameters parameters )
-            : base(visitedGraph, parameters)
+        public EfficientSugiyamaLayoutAlgorithm( EfficientSugiyamaLayoutParameters parameters )
+            : base( parameters )
         {
         }
 

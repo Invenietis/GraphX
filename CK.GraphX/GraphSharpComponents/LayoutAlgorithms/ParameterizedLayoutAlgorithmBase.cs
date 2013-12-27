@@ -21,13 +21,13 @@ namespace GraphX.GraphSharp.Algorithms.Layout
         where TGraph : IVertexAndEdgeListGraph<TVertex, TEdge>
         where TParam : class, ILayoutParameters, new()
     {
-        protected DefaultParameterizedLayoutAlgorithmBase(TGraph visitedGraph) 
-            : base(visitedGraph)
+        protected DefaultParameterizedLayoutAlgorithmBase() 
+            : base( null )
         {
         }
 
-        protected DefaultParameterizedLayoutAlgorithmBase(TGraph visitedGraph, TParam oldParameters) 
-            : base(visitedGraph, oldParameters)
+        protected DefaultParameterizedLayoutAlgorithmBase( TParam oldParameters ) 
+            : base( oldParameters)
         {
         }
 
@@ -59,13 +59,7 @@ namespace GraphX.GraphSharp.Algorithms.Layout
 		public TraceSource TraceSource { get; protected set; }
 		#endregion
 
-		protected ParameterizedLayoutAlgorithmBase( TGraph visitedGraph )
-			: this( visitedGraph, null ) 
-        { 
-        }
-
-		protected ParameterizedLayoutAlgorithmBase( TGraph visitedGraph, TParam oldParameters )
-			: base( visitedGraph )
+		protected ParameterizedLayoutAlgorithmBase( TParam oldParameters )
 		{
 			InitParameters( oldParameters );
 			TraceSource = new TraceSource( "LayoutAlgorithm", SourceLevels.All );

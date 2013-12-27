@@ -12,22 +12,15 @@ namespace GraphX.GraphSharp.Algorithms.Layout
         where TEdge : IEdge<TVertex>
         where TGraph : IBidirectionalGraph<TVertex, TEdge>
     {
-        readonly Random _random = new Random();
-
-        public RandomLayoutAlgorithm(TGraph graph)
-            : base( graph )
-        {
-        }
-
-        public bool RandomOnlyNewVertices { get; set; }
+        public bool AlsoRandomValidPosition { get; set; }
 
         protected override Point OnOriginalPosition( TVertex v, Point p )
         {
-            if( RandomOnlyNewVertices )
+            if( AlsoRandomValidPosition )
             {
-                return new Point( _random.Next( 0, 2000 ), _random.Next( 0, 2000 ) );
+                return new Point( Randomizer.Next( 0, 2000 ), Randomizer.Next( 0, 2000 ) );
             }
-            return p.IsDefined() ? p : new Point( _random.Next( 0, 2000 ), _random.Next( 0, 2000 ) );
+            return p.IsValid() ? p : new Point( Randomizer.Next( 0, 2000 ), Randomizer.Next( 0, 2000 ) );
         }
 
         protected override void InternalCompute()

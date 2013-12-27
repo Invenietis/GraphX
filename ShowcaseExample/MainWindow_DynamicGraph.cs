@@ -27,7 +27,6 @@ namespace ShowcaseExample
             dg_remvertex.Click += dg_remvertex_Click;
             dg_addedge.Click += dg_addedge_Click;
             dg_remedge.Click += dg_remedge_Click;
-            dg_Area.DefaultLayoutAlgorithm = LayoutAlgorithmTypeEnum.KK;
             dg_Area.DefaultOverlapRemovalAlgorithm = OverlapRemovalAlgorithmTypeEnum.FSA;
             dg_Area.DefaultEdgeRoutingAlgorithm = EdgeRoutingAlgorithmTypeEnum.None;
             dg_Area.MoveAnimation = AnimationFactory.CreateMoveAnimation(MoveAnimation.Move, TimeSpan.FromSeconds(0.5));

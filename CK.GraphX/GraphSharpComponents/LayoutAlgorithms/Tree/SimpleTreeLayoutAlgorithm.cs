@@ -20,8 +20,8 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.Tree
         readonly IList<Layer> layers = new List<Layer>();
         int direction;
 
-        public SimpleTreeLayoutAlgorithm( TGraph visitedGraph, SimpleTreeLayoutParameters parameters )
-            : base( visitedGraph, parameters )
+        public SimpleTreeLayoutAlgorithm( SimpleTreeLayoutParameters parameters )
+            : base( parameters )
         {
         }
 

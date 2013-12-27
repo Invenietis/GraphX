@@ -32,8 +32,8 @@ namespace GraphX.GraphSharp.Algorithms.Layout.Simple.FDP
         private double idealEdgeLength;
         #endregion
 
-        public KKLayoutAlgorithm( Graph visitedGraph, KKLayoutParameters oldParameters )
-            : base( visitedGraph, oldParameters ) 
+        public KKLayoutAlgorithm( KKLayoutParameters oldParameters )
+            : base( oldParameters ) 
         { 
         }
 

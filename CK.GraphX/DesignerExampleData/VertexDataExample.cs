@@ -9,7 +9,7 @@ namespace GraphX.DesignerExampleData
         public VertexDataExample(int id, string name)
         {
             ID = id; Name = name;
-            DataImage = new BitmapImage(new Uri(@"pack://application:,,,/GraphX;component/Images/help_black.png", UriKind.Absolute)) { CacheOption = BitmapCacheOption.OnLoad };
+            DataImage = new BitmapImage(new Uri(@"pack://application:,,,/CK.GraphX;component/Images/help_black.png", UriKind.Absolute)) { CacheOption = BitmapCacheOption.OnLoad };
         }
 
         public string Name { get; set; }

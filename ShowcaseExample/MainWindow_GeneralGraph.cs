@@ -23,8 +23,6 @@ namespace ShowcaseExample
         private void GeneralGraph_Constructor()
         {
             //gg_Area.DefaulOverlapRemovalAlgorithm
-            gg_layalgo.ItemsSource = Enum.GetValues(typeof(LayoutAlgorithmTypeEnum)).Cast<LayoutAlgorithmTypeEnum>();
-            gg_layalgo.SelectedIndex = 0;
             gg_oralgo.ItemsSource = Enum.GetValues(typeof(OverlapRemovalAlgorithmTypeEnum)).Cast<OverlapRemovalAlgorithmTypeEnum>();
             gg_oralgo.SelectedIndex = 0;
             gg_eralgo.ItemsSource = Enum.GetValues(typeof(EdgeRoutingAlgorithmTypeEnum)).Cast<EdgeRoutingAlgorithmTypeEnum>();
@@ -242,30 +240,6 @@ namespace ShowcaseExample
             e.Handled = CustomHelper.IsIntegerInput(e.Text) && Convert.ToInt32(e.Text) <= datasourceSize;
         }
 
-        private void gg_layalgo_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            gg_Area.DefaultLayoutAlgorithm = (LayoutAlgorithmTypeEnum)gg_layalgo.SelectedItem; 
-            if (gg_Area.Graph == null) gg_but_randomgraph_Click(null, null);
-            else gg_Area.RelayoutGraph();
-            gg_Area.GenerateAllEdges();
-        }
-
-        private void gg_useExternalLayAlgo_Checked(object sender, RoutedEventArgs e)
-        {
-            if (gg_useExternalLayAlgo.IsChecked == true)
-            {
-                var graph = gg_Area.Graph == null ? GenerateDataGraph(Convert.ToInt32(gg_vertexCount.Text)) : gg_Area.Graph;
-                gg_Area.Graph = graph;
-                AssignExternalLayoutAlgorithm(graph);
-            }
-            else gg_Area.ExternalLayoutAlgorithm = null;
-        }
-
-        private void AssignExternalLayoutAlgorithm(BidirectionalGraph<DataVertex, DataEdge> graph)
-        {
-            gg_Area.ExternalLayoutAlgorithm = gg_Area.AlgorithmFactory.CreateLayoutAlgorithm(LayoutAlgorithmTypeEnum.ISOM, graph, null);
-        }
-
         private void gg_oralgo_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             gg_Area.DefaultOverlapRemovalAlgorithm = (OverlapRemovalAlgorithmTypeEnum)gg_oralgo.SelectedItem;
@@ -337,37 +311,6 @@ namespace ShowcaseExample
         {
             gg_Area.Children.Clear();
             var graph = GenerateDataGraph(Convert.ToInt32(gg_vertexCount.Text));
-            //assign graph again as we need to update Graph param inside and i have no independent examples
-            if(gg_Area.ExternalLayoutAlgorithm != null)
-                AssignExternalLayoutAlgorithm(graph);
-
-            /////////////////
-            /*graph = new GraphExample();
-            var v = new DataVertex("1");
-            graph.AddVertex(v);
-            for (int i = 0; i < 5; i++)
-            {
-                var vv = new DataVertex((10 + i).ToString());
-                graph.AddVertex(vv);
-                graph.AddEdge(new DataEdge(v, vv));
-            }
-            var v2 = new DataVertex("2");
-            graph.AddVertex(v2);
-            for (int i = 0; i < 5; i++)
-            {
-                var vv = new DataVertex((20 + i).ToString());
-                graph.AddVertex(vv);
-                graph.AddEdge(new DataEdge(v2, vv));
-            }
-            //graph.AddEdge(new DataEdge(v, v2));
-            gg_Area.DefaultOverlapRemovalAlgorithmParams = gg_Area.AlgorithmFactory.CreateOverlapRemovalParameters(OverlapRemovalAlgorithmTypeEnum.FSA);
-            gg_Area.DefaultLayoutAlgorithmParams = gg_Area.AlgorithmFactory.CreateLayoutParameters(LayoutAlgorithmTypeEnum.CompoundFDP);
-
-            //((OverlapRemovalParameters)gg_Area.DefaultOverlapRemovalAlgorithmParams).HorizontalGap = 200;
-            //((OverlapRemovalParameters)gg_Area.DefaultOverlapRemovalAlgorithmParams).VerticalGap = 200;
-            */
-            /////////////////
-
             gg_Area.GenerateGraph(graph);
             EnableDrag();
 

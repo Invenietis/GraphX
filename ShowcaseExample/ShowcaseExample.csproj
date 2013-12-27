@@ -131,7 +131,6 @@
     </Compile>
     <Compile Include="ExampleModels\DataEdge.cs" />
     <Compile Include="ExampleModels\DataVertex.cs" />
-    <Compile Include="ExampleModels\ExampleExternalLayoutAlgorithm.cs" />
     <Compile Include="ExampleModels\GraphAreaExample.cs" />
     <Compile Include="ExampleModels\GraphExample.cs" />
     <Compile Include="GraphEdgeLegend.xaml.cs">
