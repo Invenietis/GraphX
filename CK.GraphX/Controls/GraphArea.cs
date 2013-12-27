@@ -15,7 +15,6 @@ using GraphX.GraphSharp.Algorithms.OverlapRemoval;
 using GraphX.Models;
 using Microsoft.Win32;
 using QuickGraph;
-using YAXLib;
 
 namespace GraphX
 {
@@ -53,13 +52,6 @@ namespace GraphX
                 return (ExternalEdgeRoutingAlgorithm == null && DefaultEdgeRoutingAlgorithm != EdgeRoutingAlgorithmTypeEnum.None) || ExternalEdgeRoutingAlgorithm != null;
             }
         }
-        #endregion
-
-        #region StateStorage
-        /// <summary>
-        /// Provides methods for saving and loading graph layout states
-        /// </summary>
-        public StateStorage<TVertex, TEdge, TGraph> StateStorage { get; private set; }
         #endregion
 
         Dictionary<TEdge, EdgeControl> _edgeslist = new Dictionary<TEdge, EdgeControl>();
@@ -238,7 +230,6 @@ namespace GraphX
             Graph = (TGraph)Activator.CreateInstance(typeof(TGraph));
             AlgorithmFactory = new AlgorithmFactory<TVertex, TEdge, TGraph>();
             AlgorithmStorage = new AlgorithmStorage<TVertex, TEdge>( null, null);
-            StateStorage = new StateStorage<TVertex, TEdge, TGraph>(this);
 
             EdgeCurvingTolerance = 8;
             EdgeSelfLoopCircleRadius = 10;
@@ -268,15 +259,15 @@ namespace GraphX
                 Children.Add(ctrl3);
 
                 UpdateLayout();
-                var edge = new EdgeDataExample<VertexDataExample>(vc, vc2, 1) { Text = "One" };
+                var edge = new EdgeDataExample<VertexDataExample>(vc, vc2) { Text = "One" };
                 var edgectrl = new EdgeControl(ctrl, ctrl2, edge);
                 Children.Add(edgectrl);
 
-                edge = new EdgeDataExample<VertexDataExample>(vc2, vc3, 1) { Text = "Two" };
+                edge = new EdgeDataExample<VertexDataExample>(vc2, vc3) { Text = "Two" };
                 edgectrl = new EdgeControl(ctrl2, ctrl3, edge);
                 Children.Add(edgectrl);
 
-                edge = new EdgeDataExample<VertexDataExample>(vc3, vc, 1) { Text = "Three" };
+                edge = new EdgeDataExample<VertexDataExample>(vc3, vc) { Text = "Three" };
                 edgectrl = new EdgeControl(ctrl3, ctrl, edge);
                 Children.Add(edgectrl);
             }
@@ -1082,210 +1073,6 @@ namespace GraphX
         }
         #endregion
 
-
-        #region Save
-
-        public void SaveIntoFile(string filename, bool autoAssignMissingDataID = true)
-        {
-            if (autoAssignMissingDataID)
-            {
-                autoresolveIds();
-            }
-
-            var dlist = new List<DataSaveModel>();
-            foreach (var item in VertexList) //ALWAYS serialize vertices first
-            {
-                dlist.Add(new DataSaveModel() { Position = item.Value.GetPosition(), Data = item.Key });
-                if (item.Key.ID == -1) throw new GX_InvalidDataException("SaveIntoFile() -> All vertex datas must have positive unique ID!");
-            }
-            foreach (var item in EdgesList)
-            {
-               // item.Key.RoutingPoints = new Point[] { new Point(0, 123), new Point(12, 12), new Point(10, 234.5) };
-                dlist.Add(new DataSaveModel() { Position = new Point(), Data = item.Key });
-                if (item.Key.ID == -1) throw new GX_InvalidDataException("SaveIntoFile() -> All edge datas must have positive unique ID!");
-            }
-
-            var serializer = new YAXSerializer(typeof(List<DataSaveModel>));
-           // string someString = serializer.Serialize(dlist);
-
-            using (var textWriter = new StreamWriter(filename))
-            {
-                serializer.Serialize(dlist, textWriter);
-                textWriter.Close();
-            }
-
-           // var gr = (List<DataSaveModel>)serializer.Deserialize(someString);
-        }
-
-        public void LoadFromFile(string filename)
-        {
-            RemoveAllEdges();
-            RemoveAllVertices();
-
-            var deserializer = new YAXSerializer(typeof(List<DataSaveModel>));
-            using (var textReader = new StreamReader(filename))
-            {
-                var data = (List<DataSaveModel>)deserializer.Deserialize(textReader);
-                if (Graph == null) Graph = Activator.CreateInstance<TGraph>();                
-                else Graph.Clear();
-
-                var vlist = data.Where(a => a.Data is TVertex);
-                foreach (var item in vlist)
-                {
-                    var vertexdata = item.Data as TVertex;
-                    var ctrl = new VertexControl(vertexdata); ctrl.SetPosition(item.Position, true);
-                    AddVertex(vertexdata, ctrl);
-                    Graph.AddVertex(vertexdata);
-                }
-                var elist = data.Where(a => a.Data is TEdge);
-                foreach (var item in elist)
-                {
-                    var edgedata = item.Data as TEdge;
-                    var sourceid = edgedata.Source.ID; var targetid = edgedata.Target.ID;
-                    var datasource = VertexList.Keys.FirstOrDefault(a => a.ID == sourceid); var datatarget = VertexList.Keys.FirstOrDefault(a => a.ID == targetid);
-
-                    edgedata.Source = datasource;
-                    edgedata.Target = datatarget;
-
-                    if (datasource == null || datatarget == null)
-                        throw new GX_SerializationException("LoadFromFile() -> Serialization logic is broken! Vertex not found. All vertices must be processed before edges!");
-                    var ecc = new EdgeControl() { Edge = edgedata, Source = VertexList[datasource], Target = VertexList[datatarget] };
-                    InsertEdge(edgedata, ecc);
-                    Graph.AddEdge(edgedata);
-                    //update edge layout and shapes manually
-                    //to correctly draw arrows in any case except they are manually disabled
-                    UpdateLayout();
-                    ecc.OnApplyTemplate();
-                }
-            }
-        }
-
-        #endregion
-
-        #region Save/Load visual - OBSOLETE
-        /// <summary>
-        /// Save visual graph data into file. Note that the same vertex and edge data must present in the Graph on file load.
-        /// </summary>
-        /// <param name="filename">Filename</param>
-        /*public void SaveVisual(string filename)
-        {
-            var input = new List<VisualSaveModel>();
-
-            foreach (var item in VertexList)
-                input.Add(new VisualSaveModel() { Type = 1, SourceID = item.Key.ID, X = GraphAreaBase.GetX(item.Value), Y = GraphAreaBase.GetY(item.Value) });
-            foreach (var item in EdgesList)
-                input.Add(new VisualSaveModel() { Type = 0, SourceID = item.Key.Source.ID, TargetID = item.Key.Target.ID, RoutingPoints = item.Key.RoutingPoints });
-
-            var serializer = new XmlSerializer(typeof(List<VisualSaveModel>));
-            using (var textWriter = new StreamWriter(filename))
-            {
-                serializer.Serialize(textWriter, input);
-                textWriter.Close();
-            }
-
-        }*/
-
-        /// <summary>
-        /// Load visual graph from filename using preloaded Graph. Note that the same vertex and edge data must present in the Graph to load all data sucessfuly.
-        /// </summary>
-        /// <param name="filename">Filename</param>
-        /*public void LoadVisual(string filename)
-        {
-            RemoveAllEdges();
-            RemoveAllVertices();
-
-            var deserializer = new XmlSerializer(typeof(List<VisualSaveModel>));
-            using (var textReader = new StreamReader(filename))
-            {
-                var data = (List<VisualSaveModel>)deserializer.Deserialize(textReader);
-                foreach (var item in data)
-                {
-                    if (item.Type == 1)
-                    {
-                        var vertexdata = Graph.Vertices.FirstOrDefault(a => a.ID == item.SourceID);// getVertexMethod(item.ID);
-                        if (vertexdata == null)
-                            Debug.WriteLine(string.Format("LoadVisual() -> Vertex data {0} not found in currently loaded Graph!", item.SourceID));
-                        var ctrl = new VertexControl(vertexdata); ctrl.SetPosition(new Point(item.X, item.Y), true);
-                        AddVertex(vertexdata, ctrl);
-                    }
-                    else if (item.Type == 0)
-                    {
-                        var edgedata = Graph.Edges.FirstOrDefault(a => a.Source.ID == item.SourceID && a.Target.ID == item.TargetID);// getEdgeMethod(item.ID);
-                        if (edgedata == null) Debug.WriteLine(string.Format("LoadVisual() -> Edge data {0}-{1} not found in currently loaded Graph!", item.SourceID, item.TargetID));
-                        if (!VertexList.ContainsKey(edgedata.Source) || !VertexList.ContainsKey(edgedata.Target))
-                            Debug.WriteLine("LoadVisual() -> Vertex control not found while loading edge!");
-                        InsertEdge(edgedata, new EdgeControl() { Edge = edgedata, DataContext = edgedata, Source = VertexList[edgedata.Source], Target = VertexList[edgedata.Target] });
-                        
-                    }
-                }
-                textReader.Close();
-            }
-        }*/
-
-        /// <summary>
-        /// Load visual graph from filename using methods for getting vertex and edge data by ID
-        /// </summary>
-        /// <param name="filename">Filename</param>
-        /// <param name="getVertexMethod">Method to get vertex data</param>
-        /// <param name="getEdgeMethod">Method to get edge data</param>
-        /// <param name="bypassMissing">Bypass missing data</param>
-        /*public void LoadVisual(string filename, Func<int, TVertex> getVertexMethod, Func<int, int, TEdge> getEdgeMethod, bool bypassMissing = true)
-        {
-            RemoveAllEdges();
-            RemoveAllVertices();
-            BidirectionalGraph<TVertex, TEdge> bdgraph;
-            try
-            {
-                Graph = (TGraph)Activator.CreateInstance(typeof(TGraph));
-                bdgraph = Graph as BidirectionalGraph<TVertex, TEdge>;
-            }
-            catch { throw new Exception("LoadVisual() -> Can't create graph instance. Check if graph type implements parameterless constructor or if it have BidirectionalGraph type."); }
-
-            var deserializer = new XmlSerializer(typeof(List<VisualSaveModel>));
-            using (var textReader = new StreamReader(filename))
-            {
-                var data = (List<VisualSaveModel>)deserializer.Deserialize(textReader);
-                //vertices
-                foreach (var item in data.Where(a=> a.Type == 1))
-                {
-                    var vertexdata = getVertexMethod(item.SourceID);
-                    if (vertexdata == null)
-                    {
-                        if (!bypassMissing) throw new Exception("LoadVisual() -> Vertex data not received!");
-                        else Debug.WriteLine("LoadVisual() -> Vertex data not received!");
-                    }
-                    else
-                    {
-                        bdgraph.AddVertex(vertexdata);
-                        var ctrl = new VertexControl(vertexdata);
-                        ctrl.SetPosition(new Point(item.X, item.Y), true);
-                        AddVertex(vertexdata, ctrl);
-                    }
-                }
-                //edges
-                foreach (var item in data.Where(a=> a.Type == 0))
-                {
-                    var edgedata = getEdgeMethod(item.SourceID, item.TargetID);
-                    if (edgedata == null)
-                    {
-                        if (!bypassMissing) throw new Exception("LoadVisual() -> Edge data not received!");
-                        else Debug.WriteLine("LoadVisual() -> Edge data not received!");
-                    }
-                    else
-                    {
-                        bdgraph.AddEdge(edgedata);
-                        if (VertexList.ContainsKey(edgedata.Source) && VertexList.ContainsKey(edgedata.Target))
-                            InsertEdge(edgedata, new EdgeControl() { Edge = edgedata, DataContext = edgedata, Source = VertexList[edgedata.Source], Target = VertexList[edgedata.Target] });
-                        else if (!bypassMissing) throw new Exception("LoadVisual() -> Vertex control not found while loading edge!");
-                             else Debug.WriteLine("LoadVisual() -> Vertex control not found while loading edge!");
-                    }
-                }
-                Graph = bdgraph as TGraph;
-                textReader.Close();
-            }
-        }*/
-        #endregion
-
         #region Export and printing
 
         /// <summary>
@@ -1353,7 +1140,6 @@ namespace GraphX
         #region IDisposable
         public void Dispose()
         {
-            StateStorage.Dispose();
             Graph = null;
             ExternalEdgeRoutingAlgorithm = null;
             ExternalOverlapRemovalAlgorithm = null;

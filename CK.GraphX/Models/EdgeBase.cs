@@ -1,10 +1,9 @@
 ﻿using GraphX.GraphSharp;
-using GraphX.Models.XmlSerializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using YAXLib;
+using QuickGraph;
 
 namespace GraphX
 {
@@ -12,10 +11,10 @@ namespace GraphX
     /// Base class for graph edge
     /// </summary>
     /// <typeparam name="TVertex">Vertex class</typeparam>
-    public abstract class EdgeBase<TVertex>: WeightedEdge<TVertex>, IIdentifiableGraphDataObject, IRoutingInfo
+    public abstract class EdgeBase<TVertex>: Edge<TVertex>, IIdentifiableGraphDataObject, IRoutingInfo
     {
-        public EdgeBase(TVertex source, TVertex target, double weight = 1)
-            : base(source, target, weight)
+        public EdgeBase(TVertex source, TVertex target)
+            : base(source, target)
         {
             ID = -1;
         }
@@ -28,7 +27,6 @@ namespace GraphX
         /// <summary>
         /// Returns true if Source vertex equals Target vertex
         /// </summary>
-        [YAXDontSerialize]
         public bool IsSelfLoop
         {
             get { return Source.Equals(Target); }
@@ -37,7 +35,6 @@ namespace GraphX
         /// <summary>
         /// Routing points collection used to make Path visual object
         /// </summary>
-        [YAXCustomSerializer(typeof(YAXPointArraySerializer))]
         public Point[] RoutingPoints { get; set; }
     }
 }

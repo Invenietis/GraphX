@@ -53,7 +53,6 @@ namespace ShowcaseExample
             Zoombox.SetViewFinderVisibility(dg_zoomctrl, System.Windows.Visibility.Visible);
 
 
-            dg_Area.VertexSelected += dg_Area_VertexSelectedForED;
             dg_zoomctrl.PreviewMouseMove += dg_Area_MouseMove;
             dg_zoomctrl.MouseDown += dg_zoomctrl_MouseDown;
 
@@ -92,65 +91,6 @@ namespace ShowcaseExample
 
         }
 
-        void dg_Area_VertexSelectedForED(object sender, GraphX.Models.VertexSelectedEventArgs args)
-        {
-            if (_isInEDMode)
-            {
-                if (_edVertex == null) //select starting vertex
-                {
-                    _edVertex = args.VertexControl;
-                    _edFakeDV = new DataVertex() { ID = -666 };
-                    _edGeo = new PathGeometry(new PathFigureCollection() { new PathFigure() { IsClosed = false, StartPoint = _edVertex.GetPosition(), Segments = new PathSegmentCollection() { new PolyLineSegment(new List<Point>() { new Point() }, true) } } });
-                    var dedge = new DataEdge(_edVertex.Vertex as DataVertex, _edFakeDV);
-                    _edEdge = new EdgeControl(_edVertex, null, dedge) { ManualDrawing = true };
-                    dg_Area.AddEdge(dedge, _edEdge);
-                    dg_Area.Graph.AddVertex(_edFakeDV);
-                    dg_Area.Graph.AddEdge(dedge);
-                    _edEdge.SetEdgePathManually(_edGeo);
-                }
-                else if (_edVertex != args.VertexControl) //finish draw
-                {
-                    _edEdge.Target = args.VertexControl;
-                    var dedge = _edEdge.Edge as DataEdge;
-                    dedge.Target = args.VertexControl.Vertex as DataVertex;
-                    var fig = _edGeo.Figures[0];
-                    var seg = fig.Segments[_edGeo.Figures[0].Segments.Count - 1] as PolyLineSegment;
-
-                    if (seg.Points.Count > 0)
-                    {
-                        var targetPos = _edEdge.Target.GetPosition();
-                        var sourcePos = _edEdge.Source.GetPosition();
-                        //get the size of the source
-                        var sourceSize = new Size()
-                        {
-                            Width = _edEdge.Source.ActualWidth,
-                            Height = _edEdge.Source.ActualHeight
-                        };
-                        var targetSize = new Size()
-                        {
-                            Width = _edEdge.Target.ActualWidth,
-                            Height = _edEdge.Target.ActualHeight
-                        };
-
-                        var src_start = seg.Points.Count == 0 ? fig.StartPoint : seg.Points[0];
-                        var src_end = seg.Points.Count > 1 ? (seg.Points[seg.Points.Count - 1] == targetPos ? seg.Points[seg.Points.Count - 2] : seg.Points[seg.Points.Count - 1]) : fig.StartPoint;
-                        Point p1 = GeometryHelper.GetEdgeEndpoint(sourcePos, new Rect(sourceSize), src_start, _edEdge.Source.MathShape);
-                        Point p2 = GeometryHelper.GetEdgeEndpoint(targetPos, new Rect(targetSize), src_end, _edEdge.Target.MathShape);
-
-
-                        fig.StartPoint = p1;
-                        if (seg.Points.Count > 1)
-                            seg.Points[seg.Points.Count - 1] = p2;
-                    }
-                    GeometryHelper.TryFreeze(_edGeo);
-                    _edEdge.SetEdgePathManually(new PathGeometry(_edGeo.Figures));
-                    _isInEDMode = false;
-                    clearEdgeDrawing();
-                }
-            }
-        }
-
-
         void clearEdgeDrawing()
         {
             _edGeo = null;
@@ -183,23 +123,6 @@ namespace ShowcaseExample
         }
 
         #endregion
-
-
-        private void dg_findrandom_Click(object sender, RoutedEventArgs e)
-        {
-            if (dg_Area.VertexList.Count == 0) return;
-            var vc = dg_Area.VertexList.ToList()[Rand.Next(0, dg_Area.VertexList.Count - 1)].Value;
-
-            int offset = 100;
-            //for Zoombox
-            var of = System.Windows.Media.VisualTreeHelper.GetOffset(vc);
-            dg_zoomctrl.ZoomTo(new Rect(of.X - offset, of.Y - offset, vc.ActualWidth + offset * 2, vc.ActualHeight + offset * 2));
-            /*
-            //FOR ZoomControl
-            var pos = dg_Area.TranslatePoint(vc.GetPosition(), dg_zoomctrl);
-            zoomctrl.ZoomTo(new Rect(pos.X - offset, pos.Y - offset, vc.ActualWidth + offset * 2, vc.ActualHeight + offset * 2));
-            */
-        }
 
         void dg_zoomctrl_AreaSelected(object sender, AreaSelectedEventArgs args)
         {
