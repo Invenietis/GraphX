@@ -61,8 +61,6 @@
                             </GroupBox>
                             <GroupBox Header="Layout algorithm" DockPanel.Dock="Top">
                                 <DockPanel LastChildFill="False">
-                                    <ComboBox IsReadOnly="True" Name="gg_layalgo" SelectionChanged="gg_layalgo_SelectionChanged" Margin="3" DockPanel.Dock="Top"/>
-                                    <CheckBox Name="gg_useExternalLayAlgo" Checked="gg_useExternalLayAlgo_Checked" Unchecked="gg_useExternalLayAlgo_Checked" Margin="3" Content="Use external algorithm"/>
                                 </DockPanel>
                             </GroupBox>
 
@@ -77,18 +75,6 @@
                                 <DockPanel LastChildFill="False">
                                     <ComboBox IsReadOnly="True" Name="gg_eralgo" SelectionChanged="gg_eralgo_SelectionChanged" Margin="3" DockPanel.Dock="Top"/>
                                     <CheckBox Name="gg_useExternalERAlgo" Checked="gg_useExternalERAlgo_Checked" Unchecked="gg_useExternalERAlgo_Checked" Margin="3" Content="Use external algorithm"/>
-                                </DockPanel>
-                            </GroupBox>
-                            <GroupBox Header="Save/load layout" DockPanel.Dock="Top">
-                                <DockPanel LastChildFill="False">
-                                    <Button Margin="3" DockPanel.Dock="Left" Width="60" Content="SAVE" Name="gg_saveLayout"/>
-                                    <Button Margin="3" DockPanel.Dock="Right" Width="60" Content="LOAD" Name="gg_loadLayout"/>
-                                </DockPanel>
-                            </GroupBox>
-                            <GroupBox Header="Save/load states" DockPanel.Dock="Top">
-                                <DockPanel LastChildFill="False">
-                                    <Button Margin="3" DockPanel.Dock="Left" Width="60" Content="SAVE" Name="gg_saveState"/>
-                                    <Button Margin="3" DockPanel.Dock="Right" Width="60" Content="LOAD" Name="gg_loadState"/>
                                 </DockPanel>
                             </GroupBox>
                             <GroupBox Header="Export" DockPanel.Dock="Top">
@@ -123,7 +109,7 @@
                         </Grid.Resources>
                         
                         <Border CornerRadius="6" BorderBrush="Black" Background="White" Margin="3" BorderThickness="2">
-                            <TextBlock Margin="3" TextWrapping="Wrap" TextAlignment="Center" Text="This graph is designed for templating, animation and visual behaviours preview. See vertex and edge tooltips, templated highlights and animations."/>
+                            <TextBlock Margin="3" TextWrapping="Wrap" TextAlignment="Center" Text="This graph is designed for templating, animation and visual behaviors preview. See vertex and edge tooltips, templated highlights and animations."/>
                         </Border>
 
                         <zb:Zoombox x:Name="tg_zoomctrl" Grid.Row="1">
@@ -344,8 +330,6 @@
                                 </StackPanel>
                             </GroupBox>
                             <Button Content="Test" DockPanel.Dock="Top" Name="dg_test"/>
-                            <Button Margin="3" Content="Find random vertex" DockPanel.Dock="Top" Name="dg_findrandom" Height="25" Click="dg_findrandom_Click"/>
-                            <Button Margin="3" Height="25" Content="Enter edge drawing mode!" Name="dg_butdraw" Click="dg_butdraw_Click" DockPanel.Dock="Top"/>
 
                             <Border Width="80" Height="80" BorderBrush="Black" CornerRadius="3" BorderThickness="2" DockPanel.Dock="Top" Name="dg_dragsource" Margin="8">
                                 <StackPanel Orientation="Vertical"  VerticalAlignment="Center" HorizontalAlignment="Center">

@@ -221,7 +221,6 @@ namespace ShowcaseExample
                         break;
                 }
                 
-                erg_Area.DefaultLayoutAlgorithm = LayoutAlgorithmTypeEnum.SimpleRandom;
                 erg_Area.DefaultOverlapRemovalAlgorithm = OverlapRemovalAlgorithmTypeEnum.FSA;
                 erg_Area.DefaultOverlapRemovalAlgorithmParams = erg_Area.AlgorithmFactory.CreateOverlapRemovalParameters(OverlapRemovalAlgorithmTypeEnum.FSA);
                 var oprm = erg_Area.DefaultOverlapRemovalAlgorithmParams as OverlapRemovalParameters;
@@ -253,7 +252,7 @@ namespace ShowcaseExample
             {
                 if (Rand.Next(0, 50) > 25) continue;
                 var vertex2 = vlist[Rand.Next(0, graph.VertexCount - 1)];
-                graph.AddEdge(new DataEdge(item, vertex2, Rand.Next(1, 50)) { ToolTipText = string.Format("{0} -> {1}", item, vertex2) });
+                graph.AddEdge(new DataEdge(item, vertex2) { ToolTipText = string.Format("{0} -> {1}", item, vertex2) });
             } 
            /* graph.AddEdge(new DataEdge(vlist[0], vlist[3], 1));
             graph.AddEdge(new DataEdge(vlist[1], vlist[4], 1));

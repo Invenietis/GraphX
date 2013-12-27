@@ -49,7 +49,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <DocumentationFile>bin\Release\CK.GraphX.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -93,15 +94,8 @@
     <Reference Include="System.Printing" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
-    <Reference Include="YAXLib, Version=2.12.0.0, Culture=neutral, PublicKeyToken=7cc39f8266ad1835, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\YAXLib.2.12\lib\YAXLib.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs">
@@ -122,25 +116,8 @@
     <Compile Include="GraphSharpComponents\EdgeRouting\PathFinderER\PathFinderEdgeRouting.cs" />
     <Compile Include="GraphSharpComponents\EdgeRouting\PathFinderER\PathFinderEdgeRoutingParameters.cs" />
     <Compile Include="GraphSharpComponents\EdgeRouting\PathFinderER\PriorityQueueB.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundFDPLayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundFDPLayoutAlgorithm.Data.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundFDPLayoutAlgorithm.Init.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundFDPLayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundGraph.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundLayoutContext.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundLayoutIterationEventArgs.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\CompoundVertexInnerLayoutType.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\ICompoundGraph.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\ICompoundLayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\ICompoundLayoutContext.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\ICompoundLayoutIterationEventArgs.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\ILayoutContext.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\LayoutContext.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\LayoutMode.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\TestingCompoundLayoutIterationEventArgs.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\TestingCompoundVertexInfo.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\Compound\IMutableCompoundGraph.cs" />
     <Compile Include="GraphSharpComponents\PointAndSizeExtension.cs" />
+    <Compile Include="GraphSharpComponents\QuickGraphExtension.cs" />
     <Compile Include="Models\Animations\DeleteFadeAnimation.cs" />
     <Compile Include="Models\Animations\DeleteShrinkAnimation.cs" />
     <Compile Include="Models\Animations\MouseOverScaleAnimation.cs" />
@@ -255,64 +232,11 @@
     <Compile Include="GraphSharpComponents\EdgeRouting\IExternalEdgeRouting.cs" />
     <Compile Include="GraphSharpComponents\EdgeRouting\SimpleER\SimpleEdgeRouting.cs" />
     <Compile Include="GraphSharpComponents\EdgeRouting\SimpleER\SimpleERParameters.cs" />
-    <Compile Include="GraphSharpComponents\GraphHideHelper.cs" />
     <Compile Include="GraphSharpComponents\GraphSharpExtensions.cs" />
-    <Compile Include="GraphSharpComponents\HierarchicalGraph.cs" />
     <Compile Include="GraphSharpComponents\IAlgorithmParameters.cs" />
-    <Compile Include="GraphSharpComponents\IHierarchicalBidirectionalGraph.cs" />
-    <Compile Include="GraphSharpComponents\ISoftMutableGraph.cs" />
-    <Compile Include="GraphSharpComponents\LayeredTopologicalSortAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Circular\CircularLayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Circular\CircularLayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\BoundedFRLayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\FRCoolingFunction.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\FreeFRLayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\FRLayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\FRLayoutParametersBase.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\ISOMLayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\ISOMLayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\KKLayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\KKLayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\LinLogLayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\LinLogLayoutAlgorithm.QuadTree.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\FDP\LinLogLayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaAlgorithm.BuildSparseNormalizedGraph.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaAlgorithm.DoCrossingMinimizations.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaAlgorithm.DoPreparing.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaLayoutAlgorithm.AlternatingLayer.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaLayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaLayoutAlgorithm.Data.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaLayoutAlgorithm.HorizontalAssignment.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaLayoutAlgorithm.SegmentContainer.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\EfficientSugiyamaLayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaEdgeRoutings.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.Enums.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.SugiEdge.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.SugiVertex.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.VertexLayer.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutAlgorithm.VertexLayerCollection.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Hierarchical\SugiyamaLayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\IExternalLayout.cs" />
     <Compile Include="GraphSharpComponents\LayoutAlgorithms\ILayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\ILayoutInfoIterationEventArgs.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\ILayoutIterationEventArgs.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\ILayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\IParameterizedLayoutAlgorithm.cs" />
     <Compile Include="GraphSharpComponents\LayoutAlgorithms\LayoutAlgorithmBase.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\LayoutDirection.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\LayoutIterationEventArgs.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\LayoutParametersBase.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\LayoutUtil.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\ParameterizedLayoutAlgorithmBase.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Random\RandomLayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\BalloonTreeLayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\BalloonTreeLayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\SimpleTreeLayoutAlgorithm.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\SimpleTreeLayoutAlgorithm.Data.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\SimpleTreeLayoutAlgorithm.WidthAndHeightOpt.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\SimpleTreeLayoutParameters.cs" />
-    <Compile Include="GraphSharpComponents\LayoutAlgorithms\Tree\SpanningTreeGeneration.cs" />
+    <Compile Include="GraphSharpComponents\LayoutAlgorithms\RandomLayoutAlgorithm.cs" />
     <Compile Include="GraphSharpComponents\OverlapRemoval\FSAAlgorithm.cs" />
     <Compile Include="GraphSharpComponents\OverlapRemoval\IExternalOverlapRemoval.cs" />
     <Compile Include="GraphSharpComponents\OverlapRemoval\IOverlapRemovalAlgorithm.cs" />
@@ -327,16 +251,10 @@
     <Compile Include="GraphSharpComponents\OverlapRemoval\OverlapRemovalParameters.cs" />
     <Compile Include="GraphSharpComponents\OverlapRemoval\RectangleWrapper.cs" />
     <Compile Include="GraphSharpComponents\OverlapRemoval\StandardOverlapRemovalAlgorithmFactory.cs" />
-    <Compile Include="GraphSharpComponents\SoftMutableBidirectionalGraph.cs" />
-    <Compile Include="GraphSharpComponents\SoftMutableHierarchicalGraph.cs" />
-    <Compile Include="GraphSharpComponents\TypedEdge.cs" />
-    <Compile Include="GraphSharpComponents\WeightedEdge.cs" />
-    <Compile Include="GraphSharpComponents\WrappedVertex.cs" />
     <Compile Include="Helpers\CustomHelper.cs" />
     <Compile Include="Helpers\GeometryHelper.cs" />
     <Compile Include="Helpers\MathHelper.cs" />
     <Compile Include="Helpers\PrintHelper.cs" />
-    <Compile Include="Helpers\ThreadingHelper.cs" />
     <Compile Include="Models\AlgorithmFactory.cs" />
     <Compile Include="Models\AlgorithmStorage.cs" />
     <Compile Include="Models\AnimationFactory.cs" />
@@ -356,20 +274,15 @@
     <Compile Include="Models\Enums\LayoutAlgorithmTypeEnum.cs" />
     <Compile Include="Models\Enums\MoveAnimation.cs" />
     <Compile Include="Models\Enums\OverlapRemovalAlgorithmTypeEnum.cs" />
-    <Compile Include="Models\GraphState.cs" />
     <Compile Include="Models\Interfaces\IGraphArea.cs" />
     <Compile Include="Models\Interfaces\IGraphControl.cs" />
     <Compile Include="Models\Interfaces\IIdentifiableGraphDataObject.cs" />
     <Compile Include="Models\Interfaces\IRoutingInfo.cs" />
-    <Compile Include="Models\StateStorage.cs" />
     <Compile Include="Models\VertexBase.cs" />
     <Compile Include="Models\VertexMovedEventArgs.cs" />
     <Compile Include="Models\VertexPositionEventArgs.cs" />
     <Compile Include="Models\VertexSelectedEventArgs.cs" />
     <Compile Include="Models\VertexSelectedEventHandler.cs" />
-    <Compile Include="Models\DataSaveModel.cs" />
-    <Compile Include="Models\XmlSerializer\YAXPointArraySerializer.cs" />
-    <Compile Include="Models\XmlSerializer\YAXPointSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -403,9 +316,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

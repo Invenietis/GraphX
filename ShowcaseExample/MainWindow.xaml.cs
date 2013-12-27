@@ -86,7 +86,7 @@ namespace ShowcaseExample
             {
                 if (Rand.Next(0, 50) > 25) continue;
                 var vertex2 = vlist[Rand.Next(0, graph.VertexCount - 1)];
-                graph.AddEdge(new DataEdge(item, vertex2, Rand.Next(1, 50)) { ID = cnt });
+                graph.AddEdge(new DataEdge(item, vertex2) { ID = cnt });
                 cnt++;
             }
             return graph;
