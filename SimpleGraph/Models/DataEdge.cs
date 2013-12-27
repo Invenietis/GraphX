@@ -27,15 +27,15 @@ namespace SimpleGraph
         /// <param name="source">Source vertex data</param>
         /// <param name="target">Target vertex data</param>
         /// <param name="weight">Optional edge weight</param>
-        public DataEdge(DataVertex source, DataVertex target, double weight = 1)
-			: base(source, target, weight)
+        public DataEdge(DataVertex source, DataVertex target)
+			: base(source, target )
 		{
 		}
         /// <summary>
         /// Default parameterless constructor (for serialization compatibility)
         /// </summary>
         public DataEdge()
-            : base(null, null, 1)
+            : base(null, null)
         {
         }
 

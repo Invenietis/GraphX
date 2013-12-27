@@ -1,5 +1,4 @@
-﻿using GraphX.GraphSharp.Algorithms.Layout.Simple.FDP;
-using GraphX.GraphSharp.Algorithms.OverlapRemoval;
+﻿using GraphX.GraphSharp.Algorithms.OverlapRemoval;
 using GraphX.Xceed.Wpf.Toolkit.Zoombox;
 using System;
 using System.Collections.Generic;
@@ -117,7 +116,7 @@ namespace SimpleGraph
             //Now lets make some edges that will connect our vertices
             //get the indexed list of graph vertices we have already added
             var vlist = dataGraph.Vertices.ToList();
-            //Then create two edges optionaly defining Text property to show who are connected
+            //Then create two edges optionally defining Text property to show who are connected
             var dataEdge = new DataEdge(vlist[0], vlist[1]) { Text = string.Format("{0} -> {1}", vlist[0], vlist[1]) };
             dataGraph.AddEdge(dataEdge);
                 dataEdge = new DataEdge(vlist[2], vlist[3]) { Text = string.Format("{0} -> {1}", vlist[2], vlist[3]) };
@@ -128,15 +127,6 @@ namespace SimpleGraph
 
         private void GraphAreaExample_Setup()
         {
-            //This property sets layout algorithm that will be used to calculate vertices positions
-            //Different algorithms uses different values and some of them uses edge Weight property.
-            Area.DefaultLayoutAlgorithm = GraphX.LayoutAlgorithmTypeEnum.KK;
-            //Now we can set parameters for selected algorithm using AlgorithmFactory property. This property provides methods for
-            //creating all available algorithms and algo parameters.
-            Area.DefaultLayoutAlgorithmParams = Area.AlgorithmFactory.CreateLayoutParameters(GraphX.LayoutAlgorithmTypeEnum.KK);
-            //Unfortunately to change algo parameters you need to specify params type which is different for every algorithm.
-            ((KKLayoutParameters)Area.DefaultLayoutAlgorithmParams).MaxIterations = 100;
-
             //This property sets vertex overlap removal algorithm.
             //Such algorithms help to arrange vertices in the layout so no one overlaps each other.
             Area.DefaultOverlapRemovalAlgorithm = GraphX.OverlapRemovalAlgorithmTypeEnum.FSA;

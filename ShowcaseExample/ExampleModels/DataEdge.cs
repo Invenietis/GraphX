@@ -12,13 +12,13 @@ namespace ShowcaseExample
     [Serializable]
     public class DataEdge : EdgeBase<DataVertex>
     {
-        public DataEdge(DataVertex source, DataVertex target, double weight = 1)
-			: base(source, target, weight)
+        public DataEdge(DataVertex source, DataVertex target)
+			: base(source, target)
 		{
 		}
 
         public DataEdge()
-            : base(null, null, 1)
+            : base(null, null )
         {
         }
 

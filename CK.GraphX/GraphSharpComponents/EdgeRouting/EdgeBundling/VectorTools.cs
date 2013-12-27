@@ -30,7 +30,6 @@ namespace GraphX.GraphSharp.Algorithms.EdgeRouting
 
         public static Point MidPoint(Point p1, Point p2)
         {
-            //CHANGED
             return Multiply(Plus(p1, p2), 0.5f);
         }
 
@@ -55,7 +54,6 @@ namespace GraphX.GraphSharp.Algorithms.EdgeRouting
 
         public static float Distance(Point p, Point q)
         {
-            //CHANGED
             return Length(Minus(q, p));
         }
     }

@@ -9,11 +9,6 @@ namespace GraphX.DesignerExampleData
         {
             
         }
-        public EdgeDataExample(Vertex source, Vertex target, double weight)
-            : base(source, target, weight)
-        {
-            
-        }
 
         public string Text { get; set; }
     }
