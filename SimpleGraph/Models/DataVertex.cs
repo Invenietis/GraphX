@@ -8,7 +8,7 @@ namespace SimpleGraph
      * This class also must be derived from VertexBase that provides properties and methods mandatory for
      * correct GraphX operations.
      * Some of the useful VertexBase members are:
-     *  - ID property that stores unique positive identfication number. Property must be filled by user.
+     *  - ID property that stores unique positive identification number. Property must be filled by user.
      *  
      */
 
@@ -33,7 +33,7 @@ namespace SimpleGraph
 
         private string[] imgArray = new string[4]
         {
-            @"pack://application:,,,/GraphX;component/Images/help_black.png",
+            @"pack://application:,,,/CK.GraphX;component/Images/help_black.png",
             @"pack://application:,,,/ShowcaseExample;component/Images/skull_bw.png",
             @"pack://application:,,,/ShowcaseExample;component/Images/wrld.png",
             @"pack://application:,,,/ShowcaseExample;component/Images/birdy.png",

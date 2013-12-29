@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5CA4E0
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CK.GraphX.Designer", "CK.GraphX.Designer\CK.GraphX.Designer.csproj", "{E5DC9BC2-3DC9-4C95-B903-D7D418E40939}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{E00C5274-AA34-4CC1-BB24-F59BCF130B85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E00C5274-AA34-4CC1-BB24-F59BCF130B85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E00C5274-AA34-4CC1-BB24-F59BCF130B85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5DC9BC2-3DC9-4C95-B903-D7D418E40939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5DC9BC2-3DC9-4C95-B903-D7D418E40939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5DC9BC2-3DC9-4C95-B903-D7D418E40939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5DC9BC2-3DC9-4C95-B903-D7D418E40939}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
