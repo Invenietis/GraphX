@@ -8,7 +8,6 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
 using GraphX.Controls;
-using GraphX.DesignerExampleData;
 using GraphX.GraphSharp.Algorithms.EdgeRouting;
 using GraphX.GraphSharp.Algorithms.Layout;
 using GraphX.GraphSharp.Algorithms.OverlapRemoval;
@@ -235,43 +234,6 @@ namespace GraphX
             EdgeSelfLoopCircleRadius = 10;
             EdgeShowSelfLooped = true;
             UpdateGraphOnDataOperations = false;
-
-            #region Designer Data
-            if (DesignerProperties.GetIsInDesignMode(this))
-            {
-                //var dic = new ResourceDictionary() { Source = new Uri(@"pack://application:,,,/GraphX;component/Themes/Generic.xaml") };
-                //Resources.MergedDictionaries.Clear();
-                //Resources.MergedDictionaries.Add(dic);
-
-                var vc = new VertexDataExample(1, "Johnson B.C");
-                var ctrl = new VertexControl(vc) { RootArea = this };
-                SetX(ctrl, 0, true); SetY(ctrl, 0, true);
-                Children.Add(ctrl);
-
-                var vc2 = new VertexDataExample(2, "Manson J.C");
-                var ctrl2 = new VertexControl(vc2) { RootArea = this };
-                SetX(ctrl2, 800, true); SetY(ctrl2, 0, true);
-                Children.Add(ctrl2);
-
-                var vc3 = new VertexDataExample(1, "Franklin A.J");
-                var ctrl3 = new VertexControl(vc3) { RootArea = this };
-                SetX(ctrl3, 400, true); SetY(ctrl3, 800, true);
-                Children.Add(ctrl3);
-
-                UpdateLayout();
-                var edge = new EdgeDataExample<VertexDataExample>(vc, vc2) { Text = "One" };
-                var edgectrl = new EdgeControl(ctrl, ctrl2, edge);
-                Children.Add(edgectrl);
-
-                edge = new EdgeDataExample<VertexDataExample>(vc2, vc3) { Text = "Two" };
-                edgectrl = new EdgeControl(ctrl2, ctrl3, edge);
-                Children.Add(edgectrl);
-
-                edge = new EdgeDataExample<VertexDataExample>(vc3, vc) { Text = "Three" };
-                edgectrl = new EdgeControl(ctrl3, ctrl, edge);
-                Children.Add(edgectrl);
-            }
-            #endregion
         }
 
         #region Edge & vertex controls operations

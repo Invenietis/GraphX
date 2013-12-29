@@ -220,8 +220,6 @@
     <Compile Include="Controls\ZoomControl\ZoomControl.cs" />
     <Compile Include="Controls\ZoomControl\ZoomControlModes.cs" />
     <Compile Include="Controls\ZoomControl\ZoomViewModifierMode.cs" />
-    <Compile Include="DesignerExampleData\EdgeDataExample.cs" />
-    <Compile Include="DesignerExampleData\VertexDataExample.cs" />
     <Compile Include="GraphSharpComponents\EdgeRouting\EdgeBundling\BundleEdgeRouting.cs" />
     <Compile Include="GraphSharpComponents\EdgeRouting\EdgeBundling\BundleEdgeRoutingParameters.cs" />
     <Compile Include="GraphSharpComponents\EdgeRouting\EdgeBundling\VectorTools.cs" />
