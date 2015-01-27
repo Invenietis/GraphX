@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CK.GraphX", "CK.GraphX\CK.GraphX.csproj", "{5C3DACE2-1963-4F43-BFC1-4BEE77A61567}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowcaseExample", "ShowcaseExample\ShowcaseExample.csproj", "{A010A068-AC95-4A37-8054-C0B3DB6CD33F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowcaseExample", "Tests\ShowcaseExample\ShowcaseExample.csproj", "{A010A068-AC95-4A37-8054-C0B3DB6CD33F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4E6754C9-7232-450C-A060-7E43D49BEAD4}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,44 +15,53 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example projects", "Example projects", "{64D551AF-1C48-49EF-8E2D-7DE98C0EED55}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{64D551AF-1C48-49EF-8E2D-7DE98C0EED55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleGraph", "SimpleGraph\SimpleGraph.csproj", "{E00C5274-AA34-4CC1-BB24-F59BCF130B85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleGraph", "Tests\SimpleGraph\SimpleGraph.csproj", "{E00C5274-AA34-4CC1-BB24-F59BCF130B85}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5CA4E001-1933-406D-93BD-8B94778C6E1D}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CK.GraphX.Designer", "CK.GraphX.Designer\CK.GraphX.Designer.csproj", "{E5DC9BC2-3DC9-4C95-B903-D7D418E40939}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5C3DACE2-1963-4F43-BFC1-4BEE77A61567}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5C3DACE2-1963-4F43-BFC1-4BEE77A61567}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C3DACE2-1963-4F43-BFC1-4BEE77A61567}.Debug|x86.ActiveCfg = Debug|x86
+		{5C3DACE2-1963-4F43-BFC1-4BEE77A61567}.Debug|x86.Build.0 = Debug|x86
 		{5C3DACE2-1963-4F43-BFC1-4BEE77A61567}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C3DACE2-1963-4F43-BFC1-4BEE77A61567}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C3DACE2-1963-4F43-BFC1-4BEE77A61567}.Release|x86.ActiveCfg = Release|x86
+		{5C3DACE2-1963-4F43-BFC1-4BEE77A61567}.Release|x86.Build.0 = Release|x86
 		{A010A068-AC95-4A37-8054-C0B3DB6CD33F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A010A068-AC95-4A37-8054-C0B3DB6CD33F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A010A068-AC95-4A37-8054-C0B3DB6CD33F}.Debug|x86.ActiveCfg = Debug|x86
+		{A010A068-AC95-4A37-8054-C0B3DB6CD33F}.Debug|x86.Build.0 = Debug|x86
 		{A010A068-AC95-4A37-8054-C0B3DB6CD33F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A010A068-AC95-4A37-8054-C0B3DB6CD33F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A010A068-AC95-4A37-8054-C0B3DB6CD33F}.Release|x86.ActiveCfg = Release|x86
+		{A010A068-AC95-4A37-8054-C0B3DB6CD33F}.Release|x86.Build.0 = Release|x86
 		{E00C5274-AA34-4CC1-BB24-F59BCF130B85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E00C5274-AA34-4CC1-BB24-F59BCF130B85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E00C5274-AA34-4CC1-BB24-F59BCF130B85}.Debug|x86.ActiveCfg = Debug|x86
+		{E00C5274-AA34-4CC1-BB24-F59BCF130B85}.Debug|x86.Build.0 = Debug|x86
 		{E00C5274-AA34-4CC1-BB24-F59BCF130B85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E00C5274-AA34-4CC1-BB24-F59BCF130B85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E5DC9BC2-3DC9-4C95-B903-D7D418E40939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5DC9BC2-3DC9-4C95-B903-D7D418E40939}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5DC9BC2-3DC9-4C95-B903-D7D418E40939}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5DC9BC2-3DC9-4C95-B903-D7D418E40939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E00C5274-AA34-4CC1-BB24-F59BCF130B85}.Release|x86.ActiveCfg = Release|x86
+		{E00C5274-AA34-4CC1-BB24-F59BCF130B85}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{A010A068-AC95-4A37-8054-C0B3DB6CD33F} = {64D551AF-1C48-49EF-8E2D-7DE98C0EED55}
 		{E00C5274-AA34-4CC1-BB24-F59BCF130B85} = {64D551AF-1C48-49EF-8E2D-7DE98C0EED55}
 	EndGlobalSection
 EndGlobal

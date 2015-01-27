@@ -1,4 +1,4 @@
-﻿#region LGPL License
+#region LGPL License
 /*----------------------------------------------------------------------------
 * This file (SharedAssemblyInfo.cs) is part of CiviKey. 
 *  
@@ -29,12 +29,15 @@ using System.Reflection;
 [assembly: AssemblyCopyright( "Copyright © Invenietis 2013" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: CLSCompliant( true )]
-[assembly: AssemblyVersion( "1.0.5" )]
-[assembly: AssemblyFileVersion( "1.0.5" )]
-[assembly: AssemblyInformationalVersion( "1.0.5" )]
+[assembly: AssemblyVersion( "1.0.6" )]
+
+
 
 #if DEBUG
     [assembly: AssemblyConfiguration("Debug")]
 #else
     [assembly: AssemblyConfiguration( "Release" )]
 #endif
+
+// Added by CKReleaser.
+[assembly: AssemblyInformationalVersion( "%ck-standard%" )]

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -12,7 +13,6 @@ using System.Windows;
 
 [assembly: ComVisible(false)]
 [assembly: Guid("9b5ba6b7-51d7-451a-914b-40e478ccc532")]
-
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None,
     //where theme specific resource dictionaries are located
