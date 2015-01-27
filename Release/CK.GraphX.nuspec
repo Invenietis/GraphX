@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>CK.GraphX</id>
+    <version>1.0.7</version>
+    <authors>panthernet, invenietis</authors>
+    <owners>panthernet</owners>
+    <licenseUrl>http://www.panthernet.ru/en/projects-en/graphx-en/14-graphx-en/47-graphx-license</licenseUrl>
+    <projectUrl>https://github.com/Invenietis/ck-graphx</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      GraphX for .NET is an advanced graph visualization library based on Graph# algorithmic blueprints that uses WPF for rendering.
+      This Invenietis' version is lighter: it is only used to draw Yodii's graph and should be used only for this...
+    </description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright panthernet 2013</copyright>
+    <tags>GraphX</tags>
+    <dependencies>
+      <dependency id="QuickGraph" version="3.6.61119.7" />
+    </dependencies>
+
+  </metadata>
+    <files>
+        <file src="CK.GraphX\bin\Release\CK.GraphX.dll" target="lib\net45" />
+        <file src="CK.GraphX\bin\Release\CK.GraphX.xml" target="lib\net45" />
+    </files>
+
+</package>
