@@ -29,7 +29,7 @@ using System.Reflection;
 [assembly: AssemblyCopyright( "Copyright © Invenietis 2015" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: CLSCompliant( true )]
-[assembly: AssemblyVersion( "1.0.7" )]
+[assembly: AssemblyVersion( "1.0.8" )]
 
 
 
